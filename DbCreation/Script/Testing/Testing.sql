@@ -113,3 +113,7 @@ exec [GetProductByManufacturer] @manufacturer = 'buderus'
 exec [GetProject] @id = 1
 
 exec [GetProjectByName] @name = 'Hafid'
+
+-- insert into [Account_Project] ([AccountId], [ProjectId] ) values (1 , 1)
+
+exec [GetProjectByAccountId] @accountId = 1
