@@ -117,3 +117,5 @@ exec [GetProjectByName] @name = 'Hafid'
 -- insert into [Account_Project] ([AccountId], [ProjectId] ) values (1 , 1)
 
 exec [GetProjectByAccountId] @accountId = 1
+
+exec [GetRole] @id = 1

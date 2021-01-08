@@ -109,6 +109,20 @@
     <Build Include="StoredProcedure\Get\GetCity.sql" />
     <Build Include="StoredProcedure\Get\GetCityByName.sql" />
     <Build Include="StoredProcedure\Get\GetCityByCountry.sql" />
+    <Build Include="StoredProcedure\Get\GetCityByPostalCode.sql" />
+    <Build Include="StoredProcedure\Get\GetCountry.sql" />
+    <Build Include="StoredProcedure\Get\GetCountryByName.sql" />
+    <Build Include="StoredProcedure\Get\GetCountryByCode.sql" />
+    <Build Include="StoredProcedure\Get\GetContactInfo.sql" />
+    <Build Include="StoredProcedure\Get\GetProduct.sql" />
+    <Build Include="StoredProcedure\Get\GetProductAll.sql" />
+    <Build Include="StoredProcedure\Get\GetProductByName.sql" />
+    <Build Include="StoredProcedure\Get\GetProductByManufacturer.sql" />
+    <Build Include="StoredProcedure\Get\GetCategoryAll.sql" />
+    <Build Include="StoredProcedure\Get\GetProject.sql" />
+    <Build Include="StoredProcedure\Get\GetProjectByName.sql" />
+    <Build Include="StoredProcedure\Get\GetProjectByAccountId.sql" />
+    <Build Include="StoredProcedure\Get\GetRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />
