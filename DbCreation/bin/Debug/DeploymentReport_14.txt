@@ -1,0 +1,67 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Account] (Table)
+       [dbo].[Account_ContactInfo] (Table)
+       [dbo].[Account_Project] (Table)
+       [dbo].[Address] (Table)
+       [dbo].[Category] (Table)
+       [dbo].[Category_Product] (Table)
+       [dbo].[City] (Table)
+       [dbo].[ContactInfo] (Table)
+       [dbo].[Country] (Table)
+       [dbo].[Files] (Table)
+       [dbo].[Files_Category_Product] (Table)
+       [dbo].[Product] (Table)
+       [dbo].[Project] (Table)
+       [dbo].[Project_Category] (Table)
+       [dbo].[Project_Category_Files] (Table)
+       [dbo].[Project_Category_Product] (Table)
+       [dbo].[Role] (Table)
+       [dbo].[Supplier] (Table)
+       [dbo].[Supplier_ContactInfo] (Table)
+       Default Constraint: unnamed constraint on [dbo].[Account] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Account] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Category] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Category_Product] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Files] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Product] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Project] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[Supplier] (Default Constraint)
+       [dbo].[FK_Account_Address] (Foreign Key)
+       [dbo].[FK_Account_Role] (Foreign Key)
+       [dbo].[FK_AccountContactInfo_Account] (Foreign Key)
+       [dbo].[FK_AccountContactInfo_ContactInfo] (Foreign Key)
+       [dbo].[FK_AccountProject_Account] (Foreign Key)
+       [dbo].[FK_AccountProject_Project] (Foreign Key)
+       [dbo].[FK_Address_City] (Foreign Key)
+       [dbo].[FK_CategoryProduct_Category] (Foreign Key)
+       [dbo].[FK_CategoryProduct_Product] (Foreign Key)
+       [dbo].[FK_City_CountryId] (Foreign Key)
+       [dbo].[FK_FilesCategoryProduct_CategoryProduct] (Foreign Key)
+       [dbo].[FK_FilesCategoryProduct_Files] (Foreign Key)
+       [dbo].[FK_Project_Address] (Foreign Key)
+       [dbo].[FK_ProjectCategory_Category] (Foreign Key)
+       [dbo].[FK_ProjectCategory_Project] (Foreign Key)
+       [dbo].[FK_ProjectCategoryFiles_Files] (Foreign Key)
+       [dbo].[FK_ProjectCategoryFiles_ProjectCategory] (Foreign Key)
+       [dbo].[FK_ProjectCategoryProduct_Product] (Foreign Key)
+       [dbo].[FK_ProjectCategoryProduct_ProjectCategory] (Foreign Key)
+       [dbo].[FK_ProjectCategoryProduct_Supplier] (Foreign Key)
+       [dbo].[FK_Supplier_Address] (Foreign Key)
+       [dbo].[FK_SupplierContactInfo_ContactInfo] (Foreign Key)
+       [dbo].[FK_SupplierContactInfo_Supplier] (Foreign Key)
+       [dbo].[GenerateSalt] (Function)
+       [dbo].[AddAccount] (Procedure)
+       [dbo].[AddCategory] (Procedure)
+
+** Supporting actions

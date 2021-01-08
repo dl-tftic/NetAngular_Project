@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DbCreation</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{f140dfb2-6e0e-4609-b039-5600ca73305e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DbCreation</RootNamespace>
+    <AssemblyName>DbCreation</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Table" />
+    <Folder Include="Script" />
+    <Folder Include="StoredProcedure" />
+    <Folder Include="Functions" />
+    <Folder Include="Functions\Scalar" />
+    <Folder Include="Script\PostDeploy" />
+    <Folder Include="Script\Testing" />
+    <Folder Include="StoredProcedure\Add" />
+    <Folder Include="StoredProcedure\Get" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Table\Country.sql" />
+    <Build Include="Table\City.sql" />
+    <Build Include="Table\Address.sql" />
+    <Build Include="Table\Role.sql" />
+    <Build Include="Table\Account.sql" />
+    <Build Include="Table\ContactInfo.sql" />
+    <Build Include="Table\Account_ContactInfo.sql" />
+    <Build Include="Table\Project.sql" />
+    <Build Include="Table\Account_Project.sql" />
+    <Build Include="Table\Category.sql" />
+    <Build Include="Table\Product.sql" />
+    <Build Include="Table\Files.sql" />
+    <Build Include="Table\Supplier.sql" />
+    <Build Include="Table\Supplier_ContactInfo.sql" />
+    <Build Include="Table\Category_Product.sql" />
+    <Build Include="Table\Project_Category.sql" />
+    <Build Include="Table\Project_Category_Files.sql" />
+    <Build Include="Table\Files_Category_Product.sql" />
+    <Build Include="Table\Project_Category_Product.sql" />
+    <Build Include="Functions\Scalar\GenerateSalt.sql" />
+    <None Include="Script\PostDeploy\Insert_Cities.sql" />
+    <None Include="Script\PostDeploy\Insert_Countries.sql" />
+    <None Include="Script\PostDeploy\Insert_Roles.sql" />
+    <None Include="Script\Testing\Testing.sql" />
+    <Build Include="StoredProcedure\CheckAccountPassword.sql" />
+    <Build Include="StoredProcedure\Add\AddSupplier.sql" />
+    <Build Include="StoredProcedure\Add\AddAccount.sql" />
+    <Build Include="StoredProcedure\Add\AddAddress.sql" />
+    <Build Include="StoredProcedure\Add\AddCategory.sql" />
+    <Build Include="StoredProcedure\Add\AddContactInfo.sql" />
+    <Build Include="StoredProcedure\Add\AddFiles.sql" />
+    <Build Include="StoredProcedure\Add\AddProduct.sql" />
+    <Build Include="StoredProcedure\Add\AddProject.sql" />
+    <Build Include="StoredProcedure\Get\GetFile.sql" />
+    <Build Include="StoredProcedure\Get\GetAddress.sql" />
+    <Build Include="StoredProcedure\Get\GetAccount.sql" />
+    <Build Include="StoredProcedure\Get\GetAccountByLogin.sql" />
+    <Build Include="StoredProcedure\Get\GetCategory.sql" />
+    <Build Include="StoredProcedure\Get\GetCategoryByName.sql" />
+    <Build Include="StoredProcedure\Get\GetCity.sql" />
+    <Build Include="StoredProcedure\Get\GetCityByName.sql" />
+    <Build Include="StoredProcedure\Get\GetCityByCountry.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DbCreation.publish.xml" />
+    <None Include="Local_DbCreation.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script\PostDeploy\Script.PostDeployment.sql" />
+  </ItemGroup>
+</Project>
