@@ -111,3 +111,5 @@ exec [GetProductByName] @name = 'chaudière'
 exec [GetProductByManufacturer] @manufacturer = 'buderus'
 
 exec [GetProject] @id = 1
+
+exec [GetProjectByName] @name = 'Hafid'
