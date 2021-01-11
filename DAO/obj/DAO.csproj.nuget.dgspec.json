@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\DAO.csproj": {}
+    "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\DAO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\DAO.csproj": {
+    "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\DAO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\DAO.csproj",
+        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\DAO.csproj",
         "projectName": "DAO",
-        "projectPath": "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\DAO.csproj",
+        "projectPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\DAO.csproj",
         "packagesPath": "C:\\Users\\lisse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\obj\\",
+        "outputPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -26,17 +26,18 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\lisse\\source\\repos\\NetAngular2020_ToolsConnection\\Tools.Connection\\bin\\Debug": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\DTO.csproj": {
-                "projectPath": "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\DTO.csproj"
+              "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\DTO.csproj": {
+                "projectPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\DTO.csproj"
               },
-              "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj": {
-                "projectPath": "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj"
+              "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj": {
+                "projectPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj"
               }
             }
           }
@@ -69,14 +70,14 @@
         }
       }
     },
-    "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\DTO.csproj": {
+    "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\DTO.csproj",
+        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\DTO.csproj",
         "projectName": "DTO",
-        "projectPath": "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\DTO.csproj",
+        "projectPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\DTO.csproj",
         "packagesPath": "C:\\Users\\lisse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lisse\\source\\repos\\Project\\Poco\\obj\\",
+        "outputPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Poco\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -91,6 +92,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\lisse\\source\\repos\\NetAngular2020_ToolsConnection\\Tools.Connection\\bin\\Debug": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -127,14 +129,14 @@
         }
       }
     },
-    "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj": {
+    "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj",
+        "projectUniqueName": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj",
         "projectName": "Tools.Connection",
-        "projectPath": "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj",
+        "projectPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\Tools.Connection.csproj",
         "packagesPath": "C:\\Users\\lisse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lisse\\source\\repos\\Project\\ToolsConnection\\Tools.Connection\\obj\\",
+        "outputPath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\ToolsConnection\\Tools.Connection\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -149,6 +151,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Users\\lisse\\source\\repos\\NetAngular2020_ToolsConnection\\Tools.Connection\\bin\\Debug": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

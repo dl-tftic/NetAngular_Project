@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0a4dhKPyeCIxG1HItLkdIxTtWhZhNw7TLkPx3TTbqoAxwgdwaM6pRrT+kxEYwV02KkhXWgSWp86gxsK5WOXqWw==",
+  "dgSpecHash": "5upNBJ20ip0ms4lXjopFX09Mm74a0GG2Us23ZAYaZQZHzfhmp/5PVeVVe2Cc6ibFnHrCjOKJsP2WkO9M/g25YA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lisse\\source\\repos\\Project\\Project\\Project.csproj",
+  "projectFilePath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\Project\\Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lisse\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
     "C:\\Users\\lisse\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.1\\microsoft.aspnetcore.authentication.openidconnect.5.0.1.nupkg.sha512",

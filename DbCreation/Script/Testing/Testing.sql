@@ -119,3 +119,10 @@ exec [GetProjectByName] @name = 'Hafid'
 exec [GetProjectByAccountId] @accountId = 1
 
 exec [GetRole] @id = 1
+
+exec [GetSupplier] @id = 2
+
+exec [GetSupplierContactInfo] @id = 2
+
+exec [GetAccountContactInfo] @id = 1
+

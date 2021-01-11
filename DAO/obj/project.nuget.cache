@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "trgIl0+VYVaOWpVaTRgr1kmnbn289ps3T0WQPohwsfp3mONNdUse3mlZiFg4n/wCU5i+Y2dBbd0WSl8jfOgJ2g==",
+  "dgSpecHash": "zzdJxVs9DfA/9ys3yWEF0rr27jaYdeDaYCNPZaYIN2FA4r8OyzD4mzycVY/V8L8HIuotwVc+zs4BG+rOQtCZjw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lisse\\source\\repos\\Project\\DAO\\DAO.csproj",
+  "projectFilePath": "C:\\Users\\lisse\\source\\repos\\NetAngular_Project\\DAO\\DAO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lisse\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\lisse\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
@@ -12,7 +12,8 @@
     "C:\\Users\\lisse\\.nuget\\packages\\runtime.win-x86.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\lisse\\.nuget\\packages\\system.data.sqlclient\\4.8.2\\system.data.sqlclient.4.8.2.nupkg.sha512",
     "C:\\Users\\lisse\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
-    "C:\\Users\\lisse\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512"
+    "C:\\Users\\lisse\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
+    "C:\\Users\\lisse\\.nuget\\packages\\tools.connection\\1.0.0\\tools.connection.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }
