@@ -20,7 +20,6 @@ namespace DAO.Repository
                                                     Id = (int)reader["Id"],
                                                     Street = (string)reader["Street"],
                                                     Number = (string)reader["Number"],
-                                                    //Box = (reader["Box"] == DBNull.Value) ? null : (string)reader["Box"],
                                                     Box = (string)this.GetValueOrNull(reader["Box"]),
                                                     CityId = (int)reader["CityId"]
                                                 }).Single();
@@ -28,7 +27,15 @@ namespace DAO.Repository
 
         public int Insert(Address address)
         {
-            return 0;
+            Command cmd = new Command("AddAddress", true);
+            cmd.AddParameter("Street", address.Street);
+            cmd.AddParameter("Number", address.Number);
+            cmd.AddParameter("Box", address.Box);
+            cmd.AddParameter("CityId", address.CityId);
+
+            Connection conn = new Connection(this.connectionString);
+
+            return conn.ExecuteNonQuery(cmd);
         }
     }
 }
