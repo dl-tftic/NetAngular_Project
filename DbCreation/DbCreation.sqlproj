@@ -140,12 +140,14 @@
     <Build Include="StoredProcedure\Add\AddProductCategoryFiles.sql" />
     <Build Include="StoredProcedure\Add\AddProjectCategoryFiles.sql" />
     <Build Include="StoredProcedure\Get\GetRoleAll.sql" />
+    <Build Include="StoredProcedure\Get\GetAccountAll.sql" />
+    <Build Include="StoredProcedure\Add\AddAccountProject.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />
     <None Include="Local_DbCreation.publish.xml" />
     <None Include="Script\PostDeploy\InsertFirstValues.sql" />
-    <None Include="Script\PostDeploy\AddUser.sql" />
+    <None Include="Script\PostDeploy\Insert_User.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploy\Script.PostDeployment.sql" />
