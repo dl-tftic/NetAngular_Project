@@ -8,3 +8,9 @@ C:\Users\lisse\source\repos\Project\DbCreation\obj\Debug\Model.xml
 C:\Users\lisse\source\repos\Project\DbCreation\obj\Debug\refactor.xml
 C:\Users\lisse\source\repos\Project\DbCreation\obj\Debug\postdeploy.sql
 C:\Users\lisse\source\repos\Project\DbCreation\obj\Debug\predeploy.sql
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\bin\Debug\DbCreation.dacpac
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\bin\Debug\DbCreation.dll
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\bin\Debug\DbCreation.pdb
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\obj\Debug\DbCreation.sqlprojAssemblyReference.cache
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\obj\Debug\DbCreation.dll
+C:\Users\lisse\source\repos\NetAngular_Project\DbCreation\obj\Debug\DbCreation.pdb

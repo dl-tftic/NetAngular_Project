@@ -5,8 +5,10 @@
 	@CreateBy		int 
 	
 AS
+	DECLARE @rtn int;
+
 	INSERT INTO [Supplier] ([Name], [Description], [AddressId], [CreateBy])
 	VALUES (@Name, @Description, @AddressId, @CreateBy)
-	SELECT SCOPE_IDENTITY();
-	GO;
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

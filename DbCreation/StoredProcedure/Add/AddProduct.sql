@@ -7,8 +7,10 @@
 	@Description	varchar(255) = null,
 	@CreateBy		int
 AS
+	DECLARE @rtn int;
+
 	INSERT INTO [Product] ([Code], [Manufacturer], [Name], [Model], [Revision], [Description], [CreateBy])
 	VALUES (@Code, @Manufacturer, @Name, @Model, @Revision, @Description, @CreateBy)
-	SELECT SCOPE_IDENTITY();
-	GO;
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

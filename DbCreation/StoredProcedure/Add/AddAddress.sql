@@ -4,8 +4,9 @@
 	@Box		int = null, 
 	@CityId		int
 AS
+	DECLARE @rtn int;
 	INSERT INTO [Address] ([Street], [Number], [Box], [CityId])
 	VALUES (@Street, @Number, @Box, @CityId)
-	SELECT SCOPE_IDENTITY();
-	GO;
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

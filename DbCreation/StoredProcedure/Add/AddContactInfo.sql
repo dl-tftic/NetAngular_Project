@@ -3,8 +3,10 @@
 	@ContactInformation		varchar(80),
 	@Description			varchar(80) = null
 AS
+	DECLARE @rtn int;
+
 	INSERT INTO [ContactInfo] ([ContactType], [ContactInformation], [Description])
 	VALUES (@ContactType, @ContactInformation, @Description)
-	SELECT SCOPE_IDENTITY();
-	GO;
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

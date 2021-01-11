@@ -45,6 +45,7 @@
     <DefineTrace>true</DefineTrace>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <SuppressTSqlWarnings>SQL70001</SuppressTSqlWarnings>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
@@ -93,7 +94,10 @@
     <None Include="Script\Testing\Testing.sql" />
     <Build Include="StoredProcedure\CheckAccountPassword.sql" />
     <Build Include="StoredProcedure\Add\AddSupplier.sql" />
-    <Build Include="StoredProcedure\Add\AddAccount.sql" />
+    <Build Include="StoredProcedure\Add\AddAccount.sql">
+      <SuppressTSqlWarnings>
+      </SuppressTSqlWarnings>
+    </Build>
     <Build Include="StoredProcedure\Add\AddAddress.sql" />
     <Build Include="StoredProcedure\Add\AddCategory.sql" />
     <Build Include="StoredProcedure\Add\AddContactInfo.sql" />
@@ -123,10 +127,16 @@
     <Build Include="StoredProcedure\Get\GetProjectByName.sql" />
     <Build Include="StoredProcedure\Get\GetProjectByAccountId.sql" />
     <Build Include="StoredProcedure\Get\GetRole.sql" />
+    <Build Include="StoredProcedure\Get\GetSupplier.sql" />
+    <Build Include="StoredProcedure\Get\GetSupplierContactInfo.sql" />
+    <Build Include="StoredProcedure\Get\GetAccountContactInfo.sql" />
+    <Build Include="StoredProcedure\Get\GetProjectCategories.sql" />
+    <Build Include="StoredProcedure\DeleteProcedure.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />
     <None Include="Local_DbCreation.publish.xml" />
+    <None Include="Script\PostDeploy\InsertFirstValues.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploy\Script.PostDeployment.sql" />

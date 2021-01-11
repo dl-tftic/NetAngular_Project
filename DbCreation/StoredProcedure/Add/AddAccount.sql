@@ -1,4 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[AddAccount]
+﻿-- IF OBJECT_ID('[dbo].[AddAccount]', 'P') IS NOT NULL
+-- DROP PROCEDURE [dbo].[AddAccount]
+-- GO
+
+CREATE PROCEDURE [dbo].[AddAccount]
 	@Login		varchar(80) , 
 	@Activate	bit = 1, 
 	@LastName	varchar(50) , 
@@ -8,6 +12,7 @@
 	@AddressId	int,
 	@CreateBy	int = 0
 AS
+	DECLARE @rtn int;
 	DECLARE @salt varchar(32), @passWithSalt binary(32)
 	SET @salt = dbo.GenerateSalt(newid());
 	SET @passWithSalt = HASHBYTES('SHA2_256', CONCAT(@Password, @salt));
@@ -37,6 +42,6 @@ AS
 			@AddressId, 
 			@CreateBy
 		)
-	SELECT SCOPE_IDENTITY();
-	GO;
--- RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

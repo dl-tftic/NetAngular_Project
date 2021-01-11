@@ -4,8 +4,10 @@
 	@Type			varchar(50) = NULL, 
 	@CreateBy		int
 AS
+	DECLARE @rtn int;
+
 	INSERT INTO [Category] ([Name], [Description], [Type], [CreateBy])
 	VALUES (@Name, @Description, @Type, @CreateBy)
-	SELECT SCOPE_IDENTITY();
-	GO;
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;

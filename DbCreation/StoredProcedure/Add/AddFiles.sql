@@ -8,8 +8,10 @@
 	@Description		varchar(255) = null,
 	@CreateBy			int
 AS
+	DECLARE @rtn int;
+
 	INSERT INTO [Files] ([Name], [FileName], [FileExension], [FileByte], [FileSize], [FileLinkId], [Description], [CreateBy])
 	VALUES (@Name, @FileName, @FileExension, @FileByte, @FileSize, @FileLinkId, @Description, @CreateBy)
-	SELECT SCOPE_IDENTITY();
-
---RETURN 0
+	SET @rtn = SCOPE_IDENTITY();
+	SELECT @rtn;
+	RETURN @rtn;
