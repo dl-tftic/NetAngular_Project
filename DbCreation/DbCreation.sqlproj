@@ -82,10 +82,10 @@
     <Build Include="Table\Files.sql" />
     <Build Include="Table\Supplier.sql" />
     <Build Include="Table\Supplier_ContactInfo.sql" />
-    <Build Include="Table\Category_Product.sql" />
+    <Build Include="Table\Product_Category.sql" />
     <Build Include="Table\Project_Category.sql" />
     <Build Include="Table\Project_Category_Files.sql" />
-    <Build Include="Table\Files_Category_Product.sql" />
+    <Build Include="Table\Product_Category_Files.sql" />
     <Build Include="Table\Project_Category_Product.sql" />
     <Build Include="Functions\Scalar\GenerateSalt.sql" />
     <None Include="Script\PostDeploy\Insert_Cities.sql" />
@@ -132,6 +132,10 @@
     <Build Include="StoredProcedure\Get\GetAccountContactInfo.sql" />
     <Build Include="StoredProcedure\Get\GetProjectCategories.sql" />
     <Build Include="StoredProcedure\DeleteProcedure.sql" />
+    <Build Include="StoredProcedure\Add\AddAccountContactInfo.sql" />
+    <Build Include="StoredProcedure\Add\AddSupplierContactInfo.sql" />
+    <Build Include="StoredProcedure\Add\AddProjectCategory.sql" />
+    <Build Include="StoredProcedure\Add\AddProductCategory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />

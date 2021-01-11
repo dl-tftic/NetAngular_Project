@@ -5,6 +5,7 @@
 	@CityId		int
 AS
 	DECLARE @rtn int;
+
 	INSERT INTO [Address] ([Street], [Number], [Box], [CityId])
 	VALUES (@Street, @Number, @Box, @CityId)
 	SET @rtn = SCOPE_IDENTITY();

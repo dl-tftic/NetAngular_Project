@@ -8,7 +8,7 @@
  SELECT @idAddressProject;
 
  DECLARE @idAddressSupplier int;
- EXEC @idAddressSupplier = AddAddress @Street='Rue des Viaducs', @Number ='289', @Box = 'b', @CityId = 1873;
+ EXEC @idAddressSupplier = AddAddress @Street='Rue des Viaducs', @Number ='289', @CityId = 1873;
  SELECT @idAddressSupplier;
 
  -- Account
@@ -23,9 +23,13 @@
  SELECT @idAccount;
 
  -- Category
- DECLARE @idCategory int;
- EXEC @idCategory =  AddCategory @Name='Cat 1', @CreateBy = @idAccount;
- SELECT @idCategory;
+ DECLARE @idCategoryProject int;
+ EXEC @idCategoryProject =  AddCategory @Name='Cat 1', @CreateBy = @idAccount;
+ SELECT @idCategoryProject;
+
+ DECLARE @idCategoryProduct int;
+ EXEC @idCategoryProduct =  AddCategory @Name='Cat product 1', @CreateBy = @idAccount;
+ SELECT @idCategoryProduct;
 
  -- ContactInfo
  DECLARE @accountContactInfoId int;
@@ -39,14 +43,35 @@
 								@Name = 'Chaudière à condensation',
 								@CreateBy = @idAccount;
 
--- Project 
-DECLARE @projectId int;
-exec @projectId = [AddProject] @Name='Maison Hafid',
-							  @AddressId = @idAddressProject,
-							  @CreateBy = @idAccount
+ -- Project 
+ DECLARE @projectId int;
+ exec @projectId = [AddProject] @Name='Maison Hafid',
+								@AddressId = @idAddressProject,
+								@CreateBy = @idAccount
 
--- Supplier
-DECLARE @supplierId int;
-exec @supplierId = [AddSupplier] @Name='Facq Sanicenter Mons',
-								@AddressId = @idAddressSupplier,
-								@CreateBy = @idAccount;
+ -- Supplier
+ DECLARE @supplierId int;
+ exec @supplierId = [AddSupplier] @Name='Facq Sanicenter Mons',
+ 								@AddressId = @idAddressSupplier,
+ 								@CreateBy = @idAccount;
+
+ -- ******* Link
+
+ -- AccountContactInfo
+ DECLARE @accContactInfoId int;
+ exec @accContactInfoId =  [AddAccountContactInfo] @AccountId = @idAccount,
+													  @ContactInfoId = @accountContactInfoId;
+
+ -- SupplierContactInfo
+ DECLARE @suppContactInfoId int;
+ exec @suppContactInfoId =  [AddSupplierContactInfo] @SupplierId = @supplierId,
+ 													   @ContactInfoId = @supplierContactInfoId;
+ -- ProjectCategory
+ DECLARE @projectCategoryId int;
+ exec @projectCategoryId = [AddProjectCategory] @ProjectId = @projectId,
+												@CategoryId = @idCategoryProject;
+
+ -- ProductCategory
+ DECLARE @productCategoryId int;
+ exec @productCategoryId = [AddProductCategory] @ProductId = @productId,
+												@CategoryId = @idCategoryProduct;
