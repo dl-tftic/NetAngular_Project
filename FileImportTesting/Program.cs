@@ -10,16 +10,18 @@ namespace FileImportTesting
     {
         static void Main(string[] args)
         {
+            /*
             string fileName = @"C:\Users\lisse\Pictures\google_logo.svg";
             byte[] file = System.IO.File.ReadAllBytes(fileName);
             System.IO.FileInfo fileInfo = new System.IO.FileInfo(fileName);
             Console.WriteLine(fileInfo.Length);
+            */
 
             // Console.WriteLine(string.Join("", file));
 
-            AddressRepository aRepo = new AddressRepository();
-            Address address = aRepo.Get(1);
-            
+            // AddressRepository aRepo = new AddressRepository();
+            // Address address = aRepo.Get(1);
+
             /*
             FilesRepository fileRepo = new FilesRepository();
             Console.WriteLine(fileRepo.Get(1).FileName);
@@ -40,6 +42,29 @@ namespace FileImportTesting
             Console.WriteLine(fileRepo.Insert(fileTest2)); 
             */
 
+            /*
+            string projectDirectory = @"C:\Users\lisse\Documents\Technofuturtic\Projet";
+            string projectFilename = Path.Combine(projectDirectory, "ProjectFile.svg");
+            string productFilename = Path.Combine(projectDirectory, "ProductFile.svg");
+            byte[] projectByte = System.IO.File.ReadAllBytes(projectFilename);
+            byte[] productByte = System.IO.File.ReadAllBytes(productFilename);
+            string projectString = string.Empty;
+            string productString = string.Empty;
+            
+            foreach (byte b in projectByte)
+            {
+                projectString = string.Concat(projectString, b.ToString());
+                //Console.WriteLine(b.ToString()); 
+            }
+
+            foreach (byte b in productByte)
+            {
+                productString = string.Concat(productString, b.ToString());
+                //Console.WriteLine(b.ToString()); 
+            }
+
+            Console.WriteLine(projectString); 
+            */
         }
     }
 }

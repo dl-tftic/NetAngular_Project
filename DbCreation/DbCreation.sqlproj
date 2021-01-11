@@ -136,6 +136,9 @@
     <Build Include="StoredProcedure\Add\AddSupplierContactInfo.sql" />
     <Build Include="StoredProcedure\Add\AddProjectCategory.sql" />
     <Build Include="StoredProcedure\Add\AddProductCategory.sql" />
+    <Build Include="StoredProcedure\Add\AddProjectCategoryProduct.sql" />
+    <Build Include="StoredProcedure\Add\AddProductCategoryFiles.sql" />
+    <Build Include="StoredProcedure\Add\AddProjectCategoryFiles.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />
