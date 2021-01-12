@@ -89,6 +89,7 @@ namespace FileImportTesting
             Account account1 = accR.GetAccountByLogin("dave");
             Account account2 = accR.GetAccountByLogin("davde");
             */
+            
 
             /*
             // ************ Supplier ***********
@@ -96,11 +97,18 @@ namespace FileImportTesting
             Supplier supplier = suppR.Get(1);
             */
 
+            /*
             // ************ Project ***********
             ProjectRepository projectR = new ProjectRepository();
             Project project = projectR.Get(1);
             IEnumerable<Project> projectAccount = projectR.GetProjectByAccountId(1);
             IEnumerable<Project> projectByName = projectR.GetProjectByName("maison");
+            */
+
+            // ************ Category ***********
+            CategoryRepository catR = new CategoryRepository();
+            Category cat = catR.Get(1);
+
 
         }
     }

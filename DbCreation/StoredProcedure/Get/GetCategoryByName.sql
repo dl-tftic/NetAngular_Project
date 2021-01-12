@@ -11,4 +11,4 @@ AS
 	FROM
 		[Category]
 	WHERE
-		[Name] = @name
+		[Name] LIKE '%' + @name + '%'

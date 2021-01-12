@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
 
 namespace DAO.Repository
 {
@@ -15,6 +16,30 @@ namespace DAO.Repository
         protected Object GetValueOrNull(Object reader)
         {
             return (reader == DBNull.Value) ? null : reader;
+        }
+
+        protected T toType<T>(System.Data.IDataReader reader) where T : new()
+        {
+            try
+            {
+                T o = new T();
+
+                Type type = o.GetType();
+                PropertyInfo[] props = type.GetProperties();
+
+                foreach (PropertyInfo prop in props)
+                {
+                    //Console.WriteLine(prop.Name + " - " + prop.PropertyType);
+
+                    prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), prop.PropertyType));
+                }
+
+                return o;
+            }
+            catch
+            {
+                throw new Exception("New type can't be created from reader");
+            }
         }
     }
 }
