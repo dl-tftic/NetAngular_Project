@@ -14,4 +14,4 @@ AS
 	FROM
 		[Product]
 	WHERE
-		[Manufacturer] = @manufacturer
+		[Manufacturer] LIKE '%' + @manufacturer + '%'
