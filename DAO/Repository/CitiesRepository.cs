@@ -68,5 +68,13 @@ namespace DAO.Repository
                                                     CountryId = (int)reader["CountryId"]
                                                 });
         }
+
+        public IEnumerable<Cities> GetAll()
+        {
+            Command cmd = new Command("GetCityAll", true);
+            
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Cities>(cmd, (reader) => toType<Cities>(reader));
+        }
     }
 }

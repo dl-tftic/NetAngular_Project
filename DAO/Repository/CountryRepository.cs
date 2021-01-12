@@ -32,5 +32,13 @@ namespace DAO.Repository
             Connection conn = new Connection(this.connectionString);
             return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader));
         }
+
+        public IEnumerable<Country> GetAll()
+        {
+            Command cmd = new Command("GetCountryAll", true);
+            
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader));
+        }
     }
 }

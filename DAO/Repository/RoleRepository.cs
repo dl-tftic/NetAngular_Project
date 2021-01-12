@@ -22,5 +22,13 @@ namespace DAO.Repository
                                                     Description = (string)reader["Description"],
                                                 }).Single();
         }
+
+        public IEnumerable<Roles> GetAll()
+        {
+            Command cmd = new Command("GetRoleAll", true);
+            
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Roles>(cmd, (reader) => toType<Roles>(reader));
+        }
     }
 }
