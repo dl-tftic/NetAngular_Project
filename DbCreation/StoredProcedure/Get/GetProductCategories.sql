@@ -2,10 +2,10 @@
 	@productId int
 AS
 	SELECT
-		[Product_Category].[Id],
-		[Product_Category].[CategoryId],
-		[Product_Category].[ParentCategoryProductId],
-		[Product_Category].[ProductId]
+		[Id],
+		[CategoryId],
+		[ParentCategoryProductId],
+		[ProductId]
 	FROM
 		[Product_Category]
 	WHERE

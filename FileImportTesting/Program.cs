@@ -105,20 +105,34 @@ namespace FileImportTesting
             IEnumerable<Project> projectByName = projectR.GetProjectByName("maison");
             */
 
+            /*
             // ************ Category ***********
             CategoryRepository catR = new CategoryRepository();
             Category cat = catR.Get(1);
+            */
 
+            
             // ************ ContactInfo ***********
             ContactInfoRepository ciR = new ContactInfoRepository();
             ContactInfo ci = ciR.Get(1);
+            
 
+            /*
             // ************ Product ***********
             ProductRepository productR = new ProductRepository();
             Product p1 = productR.Get(1);
             IEnumerable<Product> p2 = productR.GetAll();
             IEnumerable<Product> p3 = productR.GetByManufacturer("Buderus");
             IEnumerable<Product> p4 = productR.GetByName("Chaudière");
+            */
+
+            // ************ ProductCategory ***********
+            ProductCategoryRepository pdcR = new ProductCategoryRepository();
+            IEnumerable<ProductCategory> pdc1 = pdcR.Get(1);
+
+            // ************ ProjectCategory ***********
+            ProjectCategoryRepository pjcR = new ProjectCategoryRepository();
+            IEnumerable<ProjectCategory> pjc1 = pjcR.Get(1);
 
         }
     }

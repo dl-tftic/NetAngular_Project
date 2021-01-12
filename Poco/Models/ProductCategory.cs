@@ -8,7 +8,10 @@ namespace DTO.Models
     {
         public int Id { get; set; }
         public int CategoryId { get; set; }
+
+        #nullable enable
+        public int? ParentCategoryProductId { get; set; }
+        #nullable disable
         public int ProductId { get; set; }
-        public int ParentCategoryProductId { get; set; }
     }
 }

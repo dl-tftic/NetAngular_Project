@@ -20,6 +20,7 @@ namespace DAO.Repository
 
         protected T toType<T>(System.Data.IDataReader reader) where T : new()
         {
+            // Console.WriteLine(typeof(T).ToString() + " - " + reader.FieldCount); 
             try
             {
                 T o = new T();
@@ -30,15 +31,23 @@ namespace DAO.Repository
                 foreach (PropertyInfo prop in props)
                 {
                     //Console.WriteLine(prop.Name + " - " + prop.PropertyType);
+                    // Console.WriteLine(prop.Name);
 
-                    prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), prop.PropertyType));
+                    if (this.GetValueOrNull(reader[prop.Name]) is null)
+                    {
+                        prop.SetValue(o, null);
+                    }
+                    else
+                    {
+                        prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), prop.PropertyType));
+                    }
                 }
 
                 return o;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("New type can't be created from reader");
+                throw new Exception(e.Message);
             }
         }
     }
