@@ -143,6 +143,9 @@ namespace FileImportTesting
 
             AccountService accServ = new AccountService(addressService, rolesService, contactInfoService);
             Console.WriteLine(accServ.Get(1).Address.Street);
+
+            SupplierService supplierService = new SupplierService(addressService);
+            BLL.Models.Supplier supplier = supplierService.Get(1);
         }
     }
 }

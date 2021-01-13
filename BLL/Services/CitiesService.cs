@@ -40,6 +40,22 @@ namespace BLL.Services
             return cities;
         }
 
+        private Cities IncludeCountry(Cities cities)
+        {
+            cities.Country = _countryService.Get(cities.GetCountryId());
+            return cities;
+        }
+
+        private List<Cities> IncludeCountries(List<Cities> cities)
+        {
+            for (int i = 0; i < cities.Count - 1; i++)
+            {
+                cities[i] = IncludeCountry(cities[i]);
+            }
+
+            return cities;
+        }
+
         public Cities Get(int id)
         {
             // return _cityRepo.Get(id).ToBLL(_countryService);

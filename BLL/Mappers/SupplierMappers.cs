@@ -10,7 +10,7 @@ namespace BLL.Mappers
     {
         public static bll.Supplier ToBLL(this dto.Supplier dto)
         {
-            bll.Supplier bll = new bll.Supplier();
+            bll.Supplier bll = new bll.Supplier(dto.AddressId);
 
             bll.Id = dto.Id;
             bll.Name = dto.Name;
@@ -19,6 +19,20 @@ namespace BLL.Mappers
             bll.CreateBy = dto.CreateBy;
 
             return bll;
+        }
+
+        public static dto.Supplier ToDTO(this bll.Supplier bll)
+        {
+            dto.Supplier dto = new dto.Supplier();
+
+            dto.Id = bll.Id;
+            dto.Name = bll.Name;
+            dto.Description = bll.Description;
+            dto.CreateDate = bll.CreateDate;
+            dto.CreateBy = bll.CreateBy;
+            dto.AddressId = bll.Address.Id;
+
+            return dto;
         }
     }
 }

@@ -21,6 +21,12 @@ namespace BLL.Services
             this._addressService = addressService;
         }
 
+        private Supplier IncludeAddress(Supplier supplier)
+        {
+            supplier.Address = _addressService.Get(supplier.GetAddressId());
+            return supplier;
+        }
+
         public Supplier Get(int id)
         {
             return _supplierRepository.Get(id).ToBLL();

@@ -1,36 +1,44 @@
 ﻿using System;
-using BLL.Models;
+using System.Collections.Generic;
+using System.Text;
+using BLL.Mappers;
 
 namespace BLL.Models
 {
-    public class Supplier
+    public class Project
     {
-
-        public Supplier()
+        public Project()
         {
             this._addressId = -1;
         }
 
-        public Supplier(int addressId)
+        public Project(int addressId)
         {
             this._addressId = addressId;
         }
+
+        //public Project(DTO.Models.Project project)
+        //{
+        //    this = project.ToBLL();
+        //}
 
         private int _addressId;
 
         public int Id { get; set; }
         public string Name { get; set; }
+
 #nullable enable
+        public string? Code { get; set; }
         public string? Description { get; set; }
 #nullable disable
-        public Address Address { get; set; }
+
         public DateTime CreateDate { get; set; }
         public int CreateBy { get; set; }
+        public Address Address { get; set; }
 
         public int GetAddressId()
         {
             return _addressId;
         }
-        
     }
 }

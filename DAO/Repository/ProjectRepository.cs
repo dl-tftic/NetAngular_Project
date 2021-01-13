@@ -27,7 +27,7 @@ namespace DAO.Repository
                                                 }).Single();
         }
 
-        public IEnumerable<Project> GetProjectByAccountId(int accountId)
+        public IEnumerable<Project> GetByAccountId(int accountId)
         {
             Command cmd = new Command("GetProjectByAccountId", true);
             cmd.AddParameter("accountId", accountId);
@@ -45,7 +45,7 @@ namespace DAO.Repository
                                                 });
         }
 
-        public IEnumerable<Project> GetProjectByName(string name)
+        public IEnumerable<Project> GetByName(string name)
         {
             Command cmd = new Command("GetProjectByName", true);
             cmd.AddParameter("name", name);

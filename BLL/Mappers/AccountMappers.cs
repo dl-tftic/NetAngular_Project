@@ -11,7 +11,7 @@ namespace BLL.Mappers
     {
         public static bll.Account ToBLL(this dto.Account dto)
         {
-            bll.Account bll = new bll.Account(dto.RoleID, dto.AddressId);
+            bll.Account bll = new bll.Account(dto.RoleID, (int)dto.AddressId);
 
             bll.Id = dto.Id;
             bll.Activate = dto.Activate;

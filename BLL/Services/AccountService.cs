@@ -31,12 +31,12 @@ namespace BLL.Services
 
         private Account IncludeRole(Account account)
         {
-            account.Role = _rolesService.Get(account.Id);
+            account.Role = _rolesService.Get(account.GetRoleId());
             return account;
         }
         private Account IncludeAddress(Account account)
         {
-            account.Address = _addressService.Get(account.Id);
+            account.Address = _addressService.Get(account.GetAddressId());
             return account;
         }
 
