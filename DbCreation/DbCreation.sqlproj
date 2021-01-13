@@ -142,6 +142,10 @@
     <Build Include="StoredProcedure\Get\GetRoleAll.sql" />
     <Build Include="StoredProcedure\Get\GetAccountAll.sql" />
     <Build Include="StoredProcedure\Add\AddAccountProject.sql" />
+    <Build Include="StoredProcedure\Get\GetProductCategories.sql" />
+    <Build Include="StoredProcedure\Get\GetCountryAll.sql" />
+    <Build Include="StoredProcedure\Get\GetCityAll.sql" />
+    <Build Include="StoredProcedure\Get\GetContactInfoByAccountId.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />
@@ -151,5 +155,8 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\PostDeploy\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DbCreation.refactorlog" />
   </ItemGroup>
 </Project>

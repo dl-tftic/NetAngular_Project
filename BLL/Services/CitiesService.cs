@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using DAO.Repository;
+using dto = DTO.Models;
 using BLL.Models;
 using BLL.Mappers;
 using BLL.Interface;
@@ -25,7 +26,18 @@ namespace BLL.Services
 
         private List<Cities> GetAll()
         {
-            return _cityRepo.GetAll().ToListBLL(_countryService);
+            IEnumerable<dto.Cities> dtoCities = _cityRepo.GetAll();
+
+            List<Cities> cities = new List<Cities>();
+
+            foreach (dto.Cities item in dtoCities)
+            {
+                Cities city = item.ToBLL();
+                city.Country = _countryService.Get(item.CountryId);
+                cities.Add(city);
+            }
+
+            return cities;
         }
 
         public Cities Get(int id)

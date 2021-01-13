@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using BLL.Models;
 
-namespace DTO.Models
+namespace BLL.Models
 {
     public class Supplier
     {
@@ -11,8 +10,9 @@ namespace DTO.Models
 #nullable enable
         public string? Description { get; set; }
 #nullable disable
+        public Address Address { get; set; }
         public DateTime CreateDate { get; set; }
         public int CreateBy { get; set; }
-        public int AddressId { get; set; }
+        
     }
 }

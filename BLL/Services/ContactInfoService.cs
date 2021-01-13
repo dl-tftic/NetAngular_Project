@@ -15,5 +15,10 @@ namespace BLL.Services
         {
             return _contactInfoRepository.Get(id).ToBLL();
         }
+
+        public List<ContactInfo> GetByAccountId(int id)
+        {
+            return _contactInfoRepository.GetByAccountId(id).ToListBLL();
+        }
     }
 }

@@ -16,22 +16,49 @@ namespace BLL.Services
 
         private IRolesService _rolesService;
 
-        public AccountService(IAddressService addressService, IRolesService rolesService)
+        private IContactInfoService _contactInfoServices;
+
+        public AccountService(  IAddressService addressService, 
+                                IRolesService rolesService, 
+                                IContactInfoService contactInfoService)
         {
             this._addressService = addressService;
 
             this._rolesService = rolesService;
 
+            this._contactInfoServices = contactInfoService;
+        }
+
+        private Account IncludeRole(Account account)
+        {
+            account.Role = _rolesService.Get(account.Id);
+            return account;
+        }
+        private Account IncludeAddress(Account account)
+        {
+            account.Address = _addressService.Get(account.Id);
+            return account;
+        }
+
+        private Account IncludeContactInfos(Account account)
+        {
+            account.ContactInfos = _contactInfoServices.GetByAccountId(account.Id);
+            return account;
+        }
+
+        private Account IncludeAll(Account account)
+        {
+            return IncludeRole(IncludeAddress(IncludeContactInfos(account)));
         }
 
         public Account Get(int id)
         {
-            return _accountRepository.Get(id).ToBLL(_addressService, _rolesService);
+            return IncludeAll(_accountRepository.Get(id).ToBLL());
         }
 
         public Account GetByLogin(string login)
         {
-            return _accountRepository.GetByLogin(login).ToBLL(_addressService, _rolesService);
+            return _accountRepository.GetByLogin(login).ToBLL();
         }
     }
 }

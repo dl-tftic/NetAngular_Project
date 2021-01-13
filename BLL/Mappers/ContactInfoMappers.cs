@@ -19,5 +19,29 @@ namespace BLL.Mappers
 
             return bll;
         }
+
+        public static List<bll.ContactInfo> ToListBLL(this IEnumerable<dto.ContactInfo> dto)
+        {
+            List<bll.ContactInfo> contactInfos = new List<bll.ContactInfo>();
+
+            foreach (dto.ContactInfo item in dto)
+            {
+                contactInfos.Add(item.ToBLL());
+            }
+
+            return contactInfos;
+        }
+
+        //public static List<T> ToListMappers<T,U>(this IEnumerable<U> us)
+        //{
+        //    List<T> newVar = new List<T>();
+
+        //    foreach (U item in us)
+        //    {
+        //        newVar.Add(item);
+        //    }
+
+        //    return newVar;
+        //}
     }
 }

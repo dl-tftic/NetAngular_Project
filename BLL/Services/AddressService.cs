@@ -20,9 +20,15 @@ namespace BLL.Services
             this._citiesService = citiesService;
         }
 
+        private Address IncludeCity(Address address)
+        {
+            address.City = _citiesService.Get(address.GetCityId());
+            return address;
+        }
+
         public Address Get(int id)
         {
-            return _addressRepo.Get(id).ToBLL(_citiesService);
+            return IncludeCity(_addressRepo.Get(id).ToBLL());
         }
 
         public int Insert(Address address)

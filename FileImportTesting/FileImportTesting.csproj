@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj" />
     <ProjectReference Include="..\DAO\DAO.csproj" />
     <ProjectReference Include="..\Poco\DTO.csproj" />
   </ItemGroup>

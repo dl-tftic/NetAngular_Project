@@ -39,7 +39,7 @@ namespace DAO.Repository
                     }
                     else
                     {
-                        prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), prop.PropertyType));
+                        prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType));
                     }
                 }
 

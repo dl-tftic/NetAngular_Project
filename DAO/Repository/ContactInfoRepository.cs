@@ -16,5 +16,13 @@ namespace DAO.Repository
             Connection conn = new Connection(this.connectionString);
             return conn.ExecuteReader<ContactInfo>(cmd, (reader) => ToType<ContactInfo>(reader)).Single();
         }
+
+        public IEnumerable<ContactInfo> GetByAccountId(int accountId)
+        {
+            Command cmd = new Command("GetContactInfoByAccountId", true);
+            cmd.AddParameter("AccountId", accountId);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<ContactInfo>(cmd, (reader) => ToType<ContactInfo>(reader));
+        }
     }
 }

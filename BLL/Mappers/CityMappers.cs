@@ -23,14 +23,14 @@ namespace BLL.Mappers
         //    return bll;
         //}
 
-        public static bll.Cities ToBLL(this dto.Cities dto, ICountryService country)
+        public static bll.Cities ToBLL(this dto.Cities dto)
         {
-            bll.Cities bll = new bll.Cities();
+            bll.Cities bll = new bll.Cities(dto.CountryId);
 
             bll.Id = dto.Id;
             bll.City = dto.City;
             bll.Code = dto.Code;
-            bll.Country = country.Get(dto.CountryId);
+            //bll.Country = country.Get(dto.CountryId);
 
             return bll;
         }
@@ -47,13 +47,13 @@ namespace BLL.Mappers
             return dto;
         }
 
-        public static List<bll.Cities> ToListBLL(this IEnumerable<dto.Cities> dto, ICountryService country)
+        public static List<bll.Cities> ToListBLL(this IEnumerable<dto.Cities> dto)
         {
             List<bll.Cities> cities = new List<bll.Cities>();
 
             foreach (dto.Cities item in dto)
             {
-                cities.Add(item.ToBLL(country));
+                cities.Add(item.ToBLL());
             }
 
             return cities;

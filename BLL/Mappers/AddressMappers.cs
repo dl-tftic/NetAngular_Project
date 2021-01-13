@@ -9,15 +9,15 @@ namespace BLL.Mappers
 {
     public static class AddressMappers
     {
-        public static bll.Address ToBLL(this dto.Address dto, ICitiesService cities)
+        public static bll.Address ToBLL(this dto.Address dto)
         {
-            bll.Address bll = new bll.Address();
+            bll.Address bll = new bll.Address(dto.CityId);
 
             bll.Id = dto.Id;
             bll.Street = dto.Street;
             bll.Number = dto.Number;
             bll.Box = dto.Box;
-            bll.City = cities.Get(dto.CityId);
+            //bll.City = cities.Get(dto.CityId);
 
             return bll;
         }

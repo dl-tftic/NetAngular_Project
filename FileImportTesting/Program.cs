@@ -4,6 +4,7 @@ using DAO.Repository;
 using DTO.Models;
 using System.IO;
 using System.Collections.Generic;
+using BLL.Services;
 
 namespace FileImportTesting
 {
@@ -134,6 +135,14 @@ namespace FileImportTesting
             ProjectCategoryRepository pjcR = new ProjectCategoryRepository();
             IEnumerable<ProjectCategory> pjc1 = pjcR.Get(1);
 
+            CountryService countryService = new CountryService();
+            CitiesService citiesService = new CitiesService(countryService);
+            AddressService addressService = new AddressService(citiesService);
+            RolesService rolesService = new RolesService();
+            ContactInfoService contactInfoService = new ContactInfoService();
+
+            AccountService accServ = new AccountService(addressService, rolesService, contactInfoService);
+            Console.WriteLine(accServ.Get(1).Address.Street);
         }
     }
 }
