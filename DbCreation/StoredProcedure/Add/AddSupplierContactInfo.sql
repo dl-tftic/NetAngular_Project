@@ -5,7 +5,7 @@ AS
 	DECLARE @rtn int;
 
 	INSERT INTO [Supplier_ContactInfo] ([SupplierId], [ContactInfoId])
-	VALUES (@supplierId, @contactInfoId)
+	VALUES (@SupplierId, @ContactInfoId)
 
 	SET @rtn = SCOPE_IDENTITY();
 	SELECT @rtn;

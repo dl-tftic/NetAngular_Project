@@ -14,7 +14,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProductCategories", true);
             cmd.AddParameter("productId", productId);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<ProductCategory>(cmd, (reader) => toType<ProductCategory>(reader));
+            return conn.ExecuteReader<ProductCategory>(cmd, (reader) => ToType<ProductCategory>(reader));
         }
     }
 }

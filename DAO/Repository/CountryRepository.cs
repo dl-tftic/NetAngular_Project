@@ -14,7 +14,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetCountry", true);
             cmd.AddParameter("id", id);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader)).Single();
+            return conn.ExecuteReader<Country>(cmd, (reader) => ToType<Country>(reader)).Single();
         }
 
         public IEnumerable<Country> GetByCode(string Iso)
@@ -22,7 +22,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetCountryByCode", true);
             cmd.AddParameter("Iso", Iso);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader));
+            return conn.ExecuteReader<Country>(cmd, (reader) => ToType<Country>(reader));
         }
 
         public IEnumerable<Country> GetByName(string name)
@@ -30,7 +30,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetCountryByName", true);
             cmd.AddParameter("name", name);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader));
+            return conn.ExecuteReader<Country>(cmd, (reader) => ToType<Country>(reader));
         }
 
         public IEnumerable<Country> GetAll()
@@ -38,7 +38,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetCountryAll", true);
             
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Country>(cmd, (reader) => toType<Country>(reader));
+            return conn.ExecuteReader<Country>(cmd, (reader) => ToType<Country>(reader));
         }
     }
 }

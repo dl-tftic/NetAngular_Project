@@ -67,10 +67,12 @@ namespace Tools.Connection
 
         private SqlConnection CreateConnection()
         {
-            SqlConnection connection = new SqlConnection();
-            connection.ConnectionString = _connectionString;
+            //SqlConnection connection = new SqlConnection();
+            //connection.ConnectionString = _connectionString;
 
-            return connection;
+            //return connection;
+
+            return new SqlConnection { ConnectionString = _connectionString };
         }
 
         private SqlCommand CreateCommand(Command command, SqlConnection connection)

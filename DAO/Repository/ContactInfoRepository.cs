@@ -14,7 +14,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetContactInfo", true);
             cmd.AddParameter("id", id);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<ContactInfo>(cmd, (reader) => toType<ContactInfo>(reader)).Single();
+            return conn.ExecuteReader<ContactInfo>(cmd, (reader) => ToType<ContactInfo>(reader)).Single();
         }
     }
 }

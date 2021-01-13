@@ -74,7 +74,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetCityAll", true);
             
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Cities>(cmd, (reader) => toType<Cities>(reader));
+            return conn.ExecuteReader<Cities>(cmd, (reader) => ToType<Cities>(reader));
         }
     }
 }

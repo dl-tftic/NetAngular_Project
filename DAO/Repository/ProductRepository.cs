@@ -14,7 +14,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProduct", true);
             cmd.AddParameter("id", id);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Product>(cmd, (reader) => toType<Product>(reader)).Single();
+            return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader)).Single();
         }
 
         public IEnumerable<Product> GetAll()
@@ -22,7 +22,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProductAll", true);
             
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Product>(cmd, (reader) => toType<Product>(reader));
+            return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader));
         }
 
         public IEnumerable<Product> GetByManufacturer(string manufacturer)
@@ -30,7 +30,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProductByManufacturer", true);
             cmd.AddParameter("manufacturer", manufacturer);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Product>(cmd, (reader) => toType<Product>(reader));
+            return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader));
         }
 
         public IEnumerable<Product> GetByName(string name)
@@ -38,7 +38,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProductByName", true);
             cmd.AddParameter("name", name);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Product>(cmd, (reader) => toType<Product>(reader));
+            return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader));
         }
     }
 }

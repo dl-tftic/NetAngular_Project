@@ -5,10 +5,11 @@ using System.Linq;
 using DAO.Repository;
 using BLL.Models;
 using BLL.Mappers;
+using BLL.Interface;
 
 namespace BLL.Services
 {
-    public class RolesService
+    public class RolesService : IRolesService
     {
         private RoleRepository _roleRepo = new RoleRepository();
 
@@ -21,7 +22,7 @@ namespace BLL.Services
 
         private List<Roles> GetAll()
         {
-            return _roleRepo.GetAll().toListBLL();
+            return _roleRepo.GetAll().ToListBLL();
         }
 
         public Roles Get(int id)

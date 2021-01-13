@@ -18,7 +18,6 @@ namespace BLL.Models
         public List<ContactInfo> ContactInfos { get; set; }
         public DateTime CreateDate { get; set; }
         public int CreateBy { get; set; }
-
-        
+   
     }
 }

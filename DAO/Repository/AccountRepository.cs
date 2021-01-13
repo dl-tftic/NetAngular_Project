@@ -29,7 +29,7 @@ namespace DAO.Repository
                                                 }).Single();
         }
 
-        public Account GetAccountByLogin(string login)
+        public Account GetByLogin(string login)
         {
             Command cmd = new Command("GetAccountByLogin", true);
             cmd.AddParameter("login", login);

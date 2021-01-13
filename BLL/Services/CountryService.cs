@@ -5,10 +5,11 @@ using System.Linq;
 using DAO.Repository;
 using BLL.Models;
 using BLL.Mappers;
+using BLL.Interface;
 
 namespace BLL.Services
 {
-    public class CountryService
+    public class CountryService : ICountryService
     {
         private CountryRepository _countryRepo = new CountryRepository();
 
@@ -21,7 +22,7 @@ namespace BLL.Services
 
         private List<Country> GetAll()
         {         
-            return _countryRepo.GetAll().toListBLL();
+            return _countryRepo.GetAll().ToListBLL();
         }
 
         public Country Get(int id)

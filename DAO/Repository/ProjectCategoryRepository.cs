@@ -14,7 +14,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetProjectCategories", true);
             cmd.AddParameter("projectId", projectId);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<ProjectCategory>(cmd, (reader) => toType<ProjectCategory>(reader));
+            return conn.ExecuteReader<ProjectCategory>(cmd, (reader) => ToType<ProjectCategory>(reader));
         }
     }
 }

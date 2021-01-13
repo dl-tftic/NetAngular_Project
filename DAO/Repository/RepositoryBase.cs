@@ -18,7 +18,7 @@ namespace DAO.Repository
             return (reader == DBNull.Value) ? null : reader;
         }
 
-        protected T toType<T>(System.Data.IDataReader reader) where T : new()
+        protected T ToType<T>(System.Data.IDataReader reader) where T : new()
         {
             // Console.WriteLine(typeof(T).ToString() + " - " + reader.FieldCount); 
             try

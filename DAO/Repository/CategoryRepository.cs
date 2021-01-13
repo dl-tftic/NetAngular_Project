@@ -38,7 +38,7 @@ namespace DAO.Repository
             cmd.AddParameter("id", id);
             Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => toType<Category>(reader)).Single();
+            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader)).Single();
         }
 
         public IEnumerable<Category> GetByName(string name)
@@ -47,7 +47,7 @@ namespace DAO.Repository
             cmd.AddParameter("name", name);
             Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => toType<Category>(reader));
+            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
         }
 
         public IEnumerable<Category> GetAll()
@@ -56,7 +56,7 @@ namespace DAO.Repository
             
             Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => toType<Category>(reader));
+            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
         }
     }
 

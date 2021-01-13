@@ -8,13 +8,13 @@ namespace BLL.Mappers
 {
     public static class CountryMappers
     {
-        public static bll.Country toBLL(this dto.Country dto)
+        public static bll.Country ToBLL(this dto.Country dto)
         {
             bll.Country bll = new bll.Country();
 
             bll.Id = dto.Id;
             bll.Iso = dto.Iso;
-            bll.iso3 = dto.iso3;
+            bll.Iso3 = dto.Iso3;
             bll.Name = dto.Name;
             bll.NumCode = dto.NumCode;
             bll.PhoneCode = dto.PhoneCode;
@@ -22,13 +22,13 @@ namespace BLL.Mappers
             return bll;
         }
 
-        public static dto.Country toDTO(this bll.Country bll)
+        public static dto.Country ToDTO(this bll.Country bll)
         {
             dto.Country dto = new dto.Country();
 
             dto.Id = bll.Id;
             dto.Iso = bll.Iso;
-            dto.iso3 = bll.iso3;
+            dto.Iso3 = bll.Iso3;
             dto.Name = bll.Name;
             dto.NumCode = bll.NumCode;
             dto.PhoneCode = bll.PhoneCode;
@@ -36,13 +36,13 @@ namespace BLL.Mappers
             return dto;
         }
 
-        public static List<bll.Country> toListBLL(this IEnumerable<dto.Country> dto)
+        public static List<bll.Country> ToListBLL(this IEnumerable<dto.Country> dto)
         {
             List<bll.Country> countries = new List<bll.Country>();
 
             foreach (dto.Country item in dto)
             {
-                countries.Add(item.toBLL());
+                countries.Add(item.ToBLL());
             }
 
             return countries;

@@ -28,7 +28,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetRoleAll", true);
             
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Roles>(cmd, (reader) => toType<Roles>(reader));
+            return conn.ExecuteReader<Roles>(cmd, (reader) => ToType<Roles>(reader));
         }
     }
 }

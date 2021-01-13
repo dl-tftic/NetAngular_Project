@@ -31,7 +31,7 @@ namespace DAO.Repository
             Command cmd = new Command("GetSupplier", true);
             cmd.AddParameter("id", id);
             Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Supplier>(cmd, (reader) => toType<Supplier>(reader)).Single();
+            return conn.ExecuteReader<Supplier>(cmd, (reader) => ToType<Supplier>(reader)).Single();
         }
     }
 }

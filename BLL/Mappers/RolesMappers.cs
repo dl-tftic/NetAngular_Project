@@ -8,7 +8,7 @@ namespace BLL.Mappers
 {
     public static class RolesMappers
     {
-        public static bll.Roles toBLL(this dto.Roles dto)
+        public static bll.Roles ToBLL(this dto.Roles dto)
         {
             bll.Roles bll = new bll.Roles();
             
@@ -19,7 +19,7 @@ namespace BLL.Mappers
             return bll;
         }
 
-        public static dto.Roles toDTO(this bll.Roles bll)
+        public static dto.Roles ToDTO(this bll.Roles bll)
         {
             dto.Roles dto = new dto.Roles();
 
@@ -30,13 +30,13 @@ namespace BLL.Mappers
             return dto;
         }
 
-        public static List<bll.Roles> toListBLL(this IEnumerable<dto.Roles> dto)
+        public static List<bll.Roles> ToListBLL(this IEnumerable<dto.Roles> dto)
         {
             List<bll.Roles> bll = new List<bll.Roles>();
 
             foreach (dto.Roles item in dto)
             {
-                bll.Add(item.toBLL());
+                bll.Add(item.ToBLL());
             }
 
             return bll;

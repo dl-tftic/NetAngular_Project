@@ -5,25 +5,53 @@ using System.Linq;
 using DAO.Repository;
 using BLL.Models;
 using BLL.Mappers;
+using BLL.Interface;
 
 namespace BLL.Services
 {
-    public class CitiesService
+    public class CitiesService : ICitiesService
     {
         private CitiesRepository _cityRepo = new CitiesRepository();
 
-        private CountryService _countryService = new CountryService();
+        private ICountryService _countryService;
 
         private List<Cities> _cities;
 
-        public CitiesService()
+        public CitiesService(ICountryService countryService)
         {
-            _cities = GetAll();
+            this._countryService = countryService;
+            this._cities = GetAll();
         }
 
         private List<Cities> GetAll()
         {
-            return _cityRepo.GetAll().toListBLL();
+            return _cityRepo.GetAll().ToListBLL(_countryService);
         }
+
+        public Cities Get(int id)
+        {
+            // return _cityRepo.Get(id).ToBLL(_countryService);
+            return _cities.Where(x => x.Id == id).SingleOrDefault();
+        }
+
+        public List<Cities> GetByName(string name)
+        {
+            // return _cityRepo.GetByName(name).ToListBLL(_countryService);
+            return _cities.Where(x => x.City.Contains(name)).ToList();
+        }
+
+        public List<Cities> GetByPostalCode(string postalCode)
+        {
+            // return _cityRepo.GetByPostalCode(postalCode).ToListBLL(_countryService);
+            return _cities.Where(x => x.Code.Contains(postalCode)).ToList();
+        }
+
+        public List<Cities> GetCityByCountry(int countryId)
+        {
+            // return _cityRepo.GetCityByCountry(countryId).ToListBLL(_countryService);
+            return _cities.Where(x => x.Country.Id == countryId).ToList();
+
+        }
+
     }
 }
