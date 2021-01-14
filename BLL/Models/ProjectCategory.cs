@@ -5,12 +5,42 @@ using BLL.Interface;
 
 namespace BLL.Models
 {
-    class ProjectCategory : Category
+    public class ProjectCategory : CategoryAbstract<ProjectCategory>
     {
-        public List<ProjectCategory> SubCategories { get; set; }
 
-        public List<Files> Files { get; set; }
+        public ProjectCategory() : base()
+        {
+            InitProjectCategoryProducts();
+        }
 
-        public List<Product> Products { get; set; }
+        public ProjectCategory(Category category) : base(category)
+        {
+            InitProjectCategoryProducts();
+        }
+        public List<ProjectCategoryProduct> ProjectCategoryProducts { get; set; }
+
+        #region function
+        private void InitProjectCategoryProducts()
+        {
+            ProjectCategoryProducts = new List<ProjectCategoryProduct>();
+        }
+        public void AddProjectCategoryProduct(ProjectCategoryProduct product)
+        {
+            if (product is null) { }
+            else this.ProjectCategoryProducts.Add(product);
+        }
+
+        public void AddProjectCategoryProducts(List<ProjectCategoryProduct> projectCategoryProducts)
+        {
+            foreach (ProjectCategoryProduct projectCategoryProduct in projectCategoryProducts)
+            {
+                this.AddProjectCategoryProduct(projectCategoryProduct);
+            }
+        }
+        public bool HasProducts()
+        {
+            return ProjectCategoryProducts.Count > 0;
+        }
+        #endregion
     }
 }

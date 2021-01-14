@@ -35,7 +35,7 @@ namespace BLL.Services
             {
                 ProductCategory productCategory = new ProductCategory(_categoryService.Get(item.CategoryId));
                 productCategory.Id = item.Id;
-                productCategory.ParentCategoryProductId = item.ParentCategoryProductId;
+                productCategory.ParentCategoryTypeId = item.ParentCategoryProductId;
 
                 productCategory.AddFiles(_filesService.GetByProductCategory(productCategory.Id));
 
@@ -65,12 +65,12 @@ namespace BLL.Services
                 }
                 else
                 {
-                    ProductCategory child = productCategories.Where(x => x.Id == productCategory.ParentCategoryProductId).SingleOrDefault();
+                    ProductCategory child = productCategories.Where(x => x.Id == productCategory.ParentCategoryTypeId).SingleOrDefault();
 
                     if (child is null) { }
                     else
                     {
-                        child.AddChildProductCategory(productCategory);
+                        child.AddChildTypeCategory(productCategory);
                         break;
                     }
                 }

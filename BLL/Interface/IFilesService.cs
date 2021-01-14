@@ -9,6 +9,9 @@ namespace BLL.Interface
 
         public List<Files> GetByProductCategory(int productCategoryId);
 
+        public List<Files> GetByProjectCategory(int projectCategoryId);
+
+
         public int Insert(Files file);
     }
 }

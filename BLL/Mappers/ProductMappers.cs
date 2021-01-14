@@ -43,5 +43,17 @@ namespace BLL.Mappers
             return dto;
         }
 
+        public static List<bll.Product> ToListBLL(this IEnumerable<dto.Product> dto)
+        {
+            List<bll.Product> bll = new List<bll.Product>();
+
+            foreach (dto.Product item in dto)
+            {
+                bll.Add(item.ToBLL());
+            }
+
+            return bll;
+        }
+
     }
 }

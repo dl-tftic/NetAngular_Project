@@ -10,3 +10,4 @@ AS
 		[Project_Category]
 	WHERE
 		[Project_Category].[Id] = @projectId
+	ORDER BY [Id]

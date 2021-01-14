@@ -154,6 +154,15 @@ namespace FileImportTesting
 
             ProductCategoryService productCategoryService = new ProductCategoryService(categoryService, filesService);
             List<BLL.Models.ProductCategory> productCategory = productCategoryService.Get(1);
+
+            ProductService productService = new ProductService(productCategoryService);
+
+            ProjectCategoryProductService projectCategoryProductService = new ProjectCategoryProductService(productService, supplierService);
+
+            ProjectCategoryService projectCategoryService = new ProjectCategoryService(categoryService, filesService, projectCategoryProductService);
+
+            ProjectService projectService = new ProjectService(addressService, projectCategoryService);
+            BLL.Models.Project project = projectService.Get(1);
         }
     }
 }

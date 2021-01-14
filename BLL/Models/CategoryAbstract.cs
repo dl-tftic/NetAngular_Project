@@ -1,59 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using BLL.Interface;
 
 namespace BLL.Models
 {
-    public class ProductCategory : CategoryAbstract<ProductCategory>
+    public class CategoryAbstract<T> : Category
     {
         #region constructor
-        public ProductCategory() : base()
+        public CategoryAbstract()
         {
-            
-        }
-
-        public ProductCategory(Category category) : base(category)
-        {
-
-        }
-        #endregion
-
-
-    }
-
-    /*
-     *  public class ProductCategory : Category
-    {
-        #region constructor
-        public ProductCategory()
-        {
-            // _categoryId = -1;
-            SubCategories = new List<ProductCategory>();
+            SubCategories = new List<T>();
 
             Files = new List<Files>();
         }
 
-        public ProductCategory(int categoryId) : this()
-        {
-            this._categoryId = categoryId;
-        }
-
-        public ProductCategory(Category category) : this()
+        public CategoryAbstract(Category category) : this()
         {
             this._categoryId = category.Id;
             FromCategory(category);
         }
         #endregion
 
+        #region properties
         private int _categoryId;
-
-        public List<ProductCategory> SubCategories { get; set; }
+        public List<T> SubCategories { get; set; }
 
         public List<Files> Files { get; set; }
 
-        public int? ParentCategoryProductId { get; set; }
+        public int? ParentCategoryTypeId { get; set; }
+        #endregion
 
+        #region function
         public int GetCategoryId()
         {
             return _categoryId;
@@ -61,8 +38,6 @@ namespace BLL.Models
 
         private void FromCategory(Category category)
         {
-            // this.Id = 0;
-            
             this.Name = category.Name;
             this.Description = category.Description;
             this.Type = category.Type;
@@ -70,10 +45,10 @@ namespace BLL.Models
             this.CreateDate = category.CreateDate;
         }
 
-        public void AddChildProductCategory(ProductCategory productCategory)
+        public void AddChildTypeCategory(T typeCategory)
         {
-            if (productCategory is null) { }
-            else this.SubCategories.Add(productCategory);
+            if (typeCategory is null) { }
+            else this.SubCategories.Add(typeCategory);
         }
 
         public void AddFile(Files file)
@@ -99,6 +74,6 @@ namespace BLL.Models
         {
             return Files.Count > 0;
         }
+        #endregion
     }
-    */
 }

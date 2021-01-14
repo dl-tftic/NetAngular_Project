@@ -36,6 +36,8 @@ namespace BLL.Models
         public int CreateBy { get; set; }
         public Address Address { get; set; }
 
+        public List<ProjectCategory> Categories { get; set; }
+
         public int GetAddressId()
         {
             return _addressId;

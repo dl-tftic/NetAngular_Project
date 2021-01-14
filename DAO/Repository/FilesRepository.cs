@@ -55,6 +55,28 @@ namespace DAO.Repository
                                                         );
         }
 
+        public IEnumerable<Files> GetByProjectCategory(int projectCategoryId)
+        {
+            Command cmd = new Command("GetFilesByProjectCategory", true);
+            cmd.AddParameter("projectCategoryId", projectCategoryId);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Files>(cmd, (reader) =>
+                                                        new Files
+                                                        {
+                                                            Id = (int)reader["Id"],
+                                                            Name = (string)reader["Name"],
+                                                            FileName = (string)reader["FileName"],
+                                                            FileExension = (string)reader["FileExension"],
+                                                            FileByte = (byte[])reader["FileByte"],
+                                                            FileSize = (long)reader["FileSize"],
+                                                            FileLinkId = (reader["FileLinkId"] == DBNull.Value) ? null : (string)reader["FileLinkId"],
+                                                            Description = (reader["Description"] == DBNull.Value) ? null : (string)reader["Description"],
+                                                            CreateDate = (DateTime)reader["CreateDate"],
+                                                            CreateBy = (int)reader["CreateBy"]
+                                                        }
+                                                        );
+        }
+
         public int Insert(Files file)
         {
             /*

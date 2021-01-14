@@ -13,6 +13,6 @@ namespace BLL.Interface
         public List<Product> GetByName(string name);
         public List<Product> GetByProject(int projectCategoryId);
 
-
+        public List<Product> GetByProjectCategory(int projectCategoryId);
     }
 }

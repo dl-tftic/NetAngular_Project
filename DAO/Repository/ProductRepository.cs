@@ -40,5 +40,13 @@ namespace DAO.Repository
             Connection conn = new Connection(this.connectionString);
             return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader));
         }
+
+        public IEnumerable<Product> GetByProjectCategory(int projectCategoryId)
+        {
+            Command cmd = new Command("GetProductByProjectCategory", true);
+            cmd.AddParameter("projectCategoryId", projectCategoryId);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Product>(cmd, (reader) => ToType<Product>(reader));
+        }
     }
 }

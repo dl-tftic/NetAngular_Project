@@ -14,9 +14,13 @@ namespace BLL.Services
 
         private IAddressService _addressService;
 
-        public ProjectService(IAddressService addressService)
+        private IProjectCategoryService _projectCategoryService;
+
+        public ProjectService(IAddressService addressService, IProjectCategoryService projectCategoryService)
         {
             this._addressService = addressService;
+
+            this._projectCategoryService = projectCategoryService;
         }
 
         private Project IncludeAddress(Project project)
@@ -25,9 +29,16 @@ namespace BLL.Services
             return project;
         }
 
+        private Project IncludeProjectCategories(Project project)
+        {
+            project.Categories = _projectCategoryService.Get(project.Id);
+            return project;
+        }
+
         public Project Get(int id)
         {
-            return _projectRepository.Get(id).ToBLL();
+            Project project = _projectRepository.Get(id).ToBLL();
+            return IncludeAddress(IncludeProjectCategories(project));
         }
 
         public List<Project> GetByAccountId(int accountId)

@@ -146,6 +146,9 @@
     <Build Include="StoredProcedure\Get\GetCountryAll.sql" />
     <Build Include="StoredProcedure\Get\GetCityAll.sql" />
     <Build Include="StoredProcedure\Get\GetContactInfoByAccountId.sql" />
+    <Build Include="StoredProcedure\Get\GetFilesByProductCategory.sql" />
+    <Build Include="StoredProcedure\Get\GetFilesByProjectCategory.sql" />
+    <Build Include="StoredProcedure\Get\GetProductByProjectCategory.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />

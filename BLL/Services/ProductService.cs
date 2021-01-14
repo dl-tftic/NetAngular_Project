@@ -13,11 +13,16 @@ namespace BLL.Services
 
         private ProductRepository _productRepository = new ProductRepository();
 
-        //private pro
+        private IProductCategoryService _productCategoryService;
+
+        public ProductService(IProductCategoryService productCategoryService)
+        {
+            this._productCategoryService = productCategoryService;
+        }
 
         private Product IncludeCategories(Product product)
         {
-            //product.Categories =
+            product.Categories = _productCategoryService.Get(product.Id);
             return product;
         }
 
@@ -28,22 +33,27 @@ namespace BLL.Services
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _productRepository.GetAll().ToListBLL();
         }
 
         public List<Product> GetByManufacturer(string manufacturer)
         {
-            throw new NotImplementedException();
+            return _productRepository.GetByManufacturer(manufacturer).ToListBLL();
         }
 
         public List<Product> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return _productRepository.GetByName(name).ToListBLL();
         }
 
         public List<Product> GetByProject(int projectCategoryId)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Product> GetByProjectCategory(int projectCategoryId)
+        {
+            return _productRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
         }
     }
 }
