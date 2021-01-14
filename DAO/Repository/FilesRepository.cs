@@ -21,7 +21,7 @@ namespace DAO.Repository
                                                             Name = (string)reader["Name"],
                                                             FileName = (string)reader["FileName"],
                                                             FileExension = (string)reader["FileExension"],
-                                                            FileByte = (byte[])reader["FileByte"],
+                                                            //FileByte = (byte[])reader["FileByte"],
                                                             FileSize = (long)reader["FileSize"],
                                                             FileLinkId = (reader["FileLinkId"] == DBNull.Value) ? null : (string)reader["FileLinkId"],
                                                             Description = (reader["Description"] == DBNull.Value) ? null : (string)reader["Description"],
@@ -45,7 +45,7 @@ namespace DAO.Repository
                                                             Name = (string)reader["Name"],
                                                             FileName = (string)reader["FileName"],
                                                             FileExension = (string)reader["FileExension"],
-                                                            FileByte = (byte[])reader["FileByte"],
+                                                            //FileByte = (byte[])reader["FileByte"],
                                                             FileSize = (long)reader["FileSize"],
                                                             FileLinkId = (reader["FileLinkId"] == DBNull.Value) ? null : (string)reader["FileLinkId"],
                                                             Description = (reader["Description"] == DBNull.Value) ? null : (string)reader["Description"],
@@ -67,7 +67,7 @@ namespace DAO.Repository
                                                             Name = (string)reader["Name"],
                                                             FileName = (string)reader["FileName"],
                                                             FileExension = (string)reader["FileExension"],
-                                                            FileByte = (byte[])reader["FileByte"],
+                                                            //FileByte = (byte[])reader["FileByte"],
                                                             FileSize = (long)reader["FileSize"],
                                                             FileLinkId = (reader["FileLinkId"] == DBNull.Value) ? null : (string)reader["FileLinkId"],
                                                             Description = (reader["Description"] == DBNull.Value) ? null : (string)reader["Description"],
@@ -75,6 +75,14 @@ namespace DAO.Repository
                                                             CreateBy = (int)reader["CreateBy"]
                                                         }
                                                         );
+        }
+
+        public byte[] Download(int id)
+        {
+            Command cmd = new Command("GetFilesDownload", true);
+            cmd.AddParameter("id", id);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<byte[]>(cmd, (reader) => (byte[])reader["FileByte"]).Single();
         }
 
         public int Insert(Files file)
