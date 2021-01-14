@@ -33,6 +33,28 @@ namespace DAO.Repository
             return file;
         }
 
+        public IEnumerable<Files> GetByProductCategory(int productCategoryId)
+        {
+            Command cmd = new Command("GetFilesByProductCategory", true);
+            cmd.AddParameter("productCategoryId", productCategoryId);
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Files>(cmd, (reader) =>
+                                                        new Files
+                                                        {
+                                                            Id = (int)reader["Id"],
+                                                            Name = (string)reader["Name"],
+                                                            FileName = (string)reader["FileName"],
+                                                            FileExension = (string)reader["FileExension"],
+                                                            FileByte = (byte[])reader["FileByte"],
+                                                            FileSize = (long)reader["FileSize"],
+                                                            FileLinkId = (reader["FileLinkId"] == DBNull.Value) ? null : (string)reader["FileLinkId"],
+                                                            Description = (reader["Description"] == DBNull.Value) ? null : (string)reader["Description"],
+                                                            CreateDate = (DateTime)reader["CreateDate"],
+                                                            CreateBy = (int)reader["CreateBy"]
+                                                        }
+                                                        );
+        }
+
         public int Insert(Files file)
         {
             /*

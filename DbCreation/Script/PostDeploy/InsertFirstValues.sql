@@ -31,27 +31,59 @@
  EXEC @idCategoryProduct =  AddCategory @Name='Cat product 1', @CreateBy = @idAccount;
  SELECT @idCategoryProduct;
 
+ DECLARE @idCategoryTechnicalSheet int;
+ EXEC @idCategoryTechnicalSheet =  AddCategory @Name='Fiche techniques', @CreateBy = @idAccount;
+ SELECT @idCategoryTechnicalSheet;
+
+ DECLARE @idCategoryNotice int;
+ EXEC @idCategoryNotice =  AddCategory @Name='Notice', @CreateBy = @idAccount;
+ SELECT @idCategoryNotice;
+
+ DECLARE @idCategoryInstallation int;
+ EXEC @idCategoryInstallation =  AddCategory @Name='Installation', @CreateBy = @idAccount;
+ SELECT @idCategoryInstallation;
+
+ DECLARE @idCategoryUtilisation int;
+ EXEC @idCategoryUtilisation =  AddCategory @Name='Utilisation', @CreateBy = @idAccount;
+ SELECT @idCategoryUtilisation;
+
+ DECLARE @idCategoryPlan int;
+ EXEC @idCategoryPlan =  AddCategory @Name='Plan', @CreateBy = @idAccount;
+ SELECT @idCategoryPlan;
+
+ DECLARE @idCategoryTechnical int;
+ EXEC @idCategoryTechnical =  AddCategory @Name='Technique', @CreateBy = @idAccount;
+ SELECT @idCategoryTechnical;
+
+ DECLARE @idCategoryElectric int;
+ EXEC @idCategoryElectric =  AddCategory @Name='Electrique', @CreateBy = @idAccount;
+ SELECT @idCategoryElectric;
+
+ DECLARE @idCategoryFirstFloor int;
+ EXEC @idCategoryFirstFloor =  AddCategory @Name='Rez de chaussée', @CreateBy = @idAccount;
+ SELECT @idCategoryFirstFloor;
+
  -- ContactInfo
  DECLARE @accountContactInfoId int;
- exec @accountContactInfoId = [AddContactInfo] @ContactType='phone', @ContactInformation='02/270 93 04'
+ EXEC @accountContactInfoId = [AddContactInfo] @ContactType='phone', @ContactInformation='02/270 93 04'
  DECLARE @supplierContactInfoId int;
- exec @supplierContactInfoId = [AddContactInfo] @ContactType='email', @ContactInformation='contact@supplier.com'
+ EXEC @supplierContactInfoId = [AddContactInfo] @ContactType='email', @ContactInformation='contact@supplier.com'
 
  -- Product
  DECLARE @productId int;
- exec @productId = [AddProduct] @Manufacturer = 'Buderus',
+ EXEC @productId = [AddProduct] @Manufacturer = 'Buderus',
 								@Name = 'Chaudière à condensation',
 								@CreateBy = @idAccount;
 
  -- Project 
  DECLARE @projectId int;
- exec @projectId = [AddProject] @Name='Maison Hafid',
+ EXEC @projectId = [AddProject] @Name='Maison Hafid',
 								@AddressId = @idAddressProject,
 								@CreateBy = @idAccount
 
  -- Supplier
  DECLARE @supplierId int;
- exec @supplierId = [AddSupplier] @Name='Facq Sanicenter Mons',
+ EXEC @supplierId = [AddSupplier] @Name='Facq Sanicenter Mons',
  								@AddressId = @idAddressSupplier,
  								@CreateBy = @idAccount;
 
@@ -65,7 +97,7 @@
  PRINT @fileProduct
  
  DECLARE @fileProjectId int;
- exec @fileProjectId = [AddFiles]	@Name = 'project file',
+ EXEC @fileProjectId = [AddFiles]	@Name = 'project file',
 									@FileName = 'projectFile.svg',
 									@FileExension = 'svg',
 									@FileByte = @fileProject,
@@ -73,7 +105,7 @@
 									@CreateBy = @idAccount;
 
  DECLARE @fileProductId int;
- exec @fileProductId = [AddFiles]	@Name = 'product file',
+ EXEC @fileProductId = [AddFiles]	@Name = 'product file',
 									@FileName = 'productFile.svg',
 									@FileExension = 'svg',
 									@FileByte = @fileProduct,
@@ -84,39 +116,76 @@
 
  -- AccountContactInfo
  DECLARE @accContactInfoId int;
- exec @accContactInfoId =  [AddAccountContactInfo] @AccountId = @idAccount,
+ EXEC @accContactInfoId =  [AddAccountContactInfo] @AccountId = @idAccount,
 													  @ContactInfoId = @accountContactInfoId;
 
  -- SupplierContactInfo
  DECLARE @suppContactInfoId int;
- exec @suppContactInfoId =  [AddSupplierContactInfo] @SupplierId = @supplierId,
+ EXEC @suppContactInfoId =  [AddSupplierContactInfo] @SupplierId = @supplierId,
  													   @ContactInfoId = @supplierContactInfoId;
  -- ProjectCategory
  DECLARE @projectCategoryId int;
- exec @projectCategoryId = [AddProjectCategory] @ProjectId = @projectId,
+ EXEC @projectCategoryId = [AddProjectCategory] @ProjectId = @projectId,
 												@CategoryId = @idCategoryProject;
 
  -- ProjectCategoryProduct
  DECLARE @projectCategoryProductId int;
- exec @projectCategoryProductId = [AddProjectCategoryProduct]
+ EXEC @projectCategoryProductId = [AddProjectCategoryProduct]
 												@Project_CategoryId = @projectCategoryId,
 												@ProductId = @productId,
 												@SupplierId = @supplierId;
 
  -- ProjectCategoryFiles
  DECLARE @projectCategoryFilesId int;
- exec @projectCategoryFilesId = [AddProjectCategoryFiles]
+ EXEC @projectCategoryFilesId = [AddProjectCategoryFiles]
 													@Project_CategoryId = @projectCategoryId,
 													@FilesId = @fileProjectId;
 
  -- ProductCategory
  DECLARE @productCategoryId int;
- exec @productCategoryId = [AddProductCategory] @ProductId = @productId,
+ EXEC @productCategoryId = [AddProductCategory] @ProductId = @productId,
 												@CategoryId = @idCategoryProduct;
+
+ DECLARE @pcTechnicalSheetId int;
+ EXEC @pcTechnicalSheetId = [AddProductCategory] @ProductId = @productId,
+												@CategoryId = @idCategoryTechnicalSheet;
+
+ DECLARE @pcNoticeId int;
+ EXEC @pcNoticeId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryNotice;
+
+ DECLARE @pcInstallationId int;
+ EXEC @pcInstallationId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryInstallation,
+										 @ParentCategoryId = @pcNoticeId;
+
+ DECLARE @pcUtilisationId int;
+ EXEC @pcUtilisationId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryUtilisation,
+										 @ParentCategoryId = @pcNoticeId;
+
+ DECLARE @pcPlanId int;
+ EXEC @pcPlanId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryPlan;
+
+ DECLARE @pcTechnicalId int;
+ EXEC @pcTechnicalId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryTechnical,
+										 @ParentCategoryId = @pcPlanId;
+
+ DECLARE @pcElectricId int;
+ EXEC @pcElectricId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryElectric,
+										 @ParentCategoryId = @pcTechnicalId;
+
+ DECLARE @pcFirstFloorId int;
+ EXEC @pcFirstFloorId = [AddProductCategory] @ProductId = @productId,
+										 @CategoryId = @idCategoryFirstFloor,
+										 @ParentCategoryId = @pcElectricId;
 
  -- ProductCategoryFiles
  DECLARE @productCategoryFilesId int;
- exec @productCategoryFilesId = [AddProductCategoryFiles] 
+ EXEC @productCategoryFilesId = [AddProductCategoryFiles] 
 												@Category_ProductId = @productCategoryId,
 												@FilesId = @fileProductId;
 

@@ -146,6 +146,14 @@ namespace FileImportTesting
 
             SupplierService supplierService = new SupplierService(addressService);
             BLL.Models.Supplier supplier = supplierService.Get(1);
+
+            FilesService filesService = new FilesService();
+            BLL.Models.Files file = filesService.Get(1);
+
+            CategoryService categoryService = new CategoryService();
+
+            ProductCategoryService productCategoryService = new ProductCategoryService(categoryService, filesService);
+            List<BLL.Models.ProductCategory> productCategory = productCategoryService.Get(1);
         }
     }
 }

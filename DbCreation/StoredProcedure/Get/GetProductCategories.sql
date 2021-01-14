@@ -9,4 +9,5 @@ AS
 	FROM
 		[Product_Category]
 	WHERE
-		[Product_Category].[Id] = @productId
+		[Product_Category].[ProductId] = @productId
+	ORDER BY [Id]

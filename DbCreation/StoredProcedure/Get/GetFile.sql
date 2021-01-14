@@ -16,4 +16,3 @@ AS
 		Files 
 	WHERE 
 		ID = @id
-RETURN 0
