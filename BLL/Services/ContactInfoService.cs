@@ -20,5 +20,10 @@ namespace BLL.Services
         {
             return _contactInfoRepository.GetByAccountId(id).ToListBLL();
         }
+
+        public List<ContactInfo> GetBySupplierId(int supplierId)
+        {
+            return _contactInfoRepository.GetBySupplierId(supplierId).ToListBLL();
+        }
     }
 }

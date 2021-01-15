@@ -28,6 +28,11 @@ namespace BLL.Services
             return _filesRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
         }
 
+        public byte[] Download(int id)
+        {
+            return _filesRepository.Download(id);
+        }
+
         public int Insert(Files file)
         {
             return _filesRepository.Insert(file.ToDTO());

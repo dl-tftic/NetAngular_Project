@@ -11,6 +11,7 @@ namespace BLL.Interface
 
         public List<Files> GetByProjectCategory(int projectCategoryId);
 
+        public byte[] Download(int id);
 
         public int Insert(Files file);
     }

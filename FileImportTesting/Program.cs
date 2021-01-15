@@ -144,7 +144,7 @@ namespace FileImportTesting
             AccountService accServ = new AccountService(addressService, rolesService, contactInfoService);
             Console.WriteLine(accServ.Get(1).Address.Street);
 
-            SupplierService supplierService = new SupplierService(addressService);
+            SupplierService supplierService = new SupplierService(addressService, contactInfoService);
             BLL.Models.Supplier supplier = supplierService.Get(1);
 
             FilesService filesService = new FilesService();
@@ -163,6 +163,9 @@ namespace FileImportTesting
 
             ProjectService projectService = new ProjectService(addressService, projectCategoryService);
             BLL.Models.Project project = projectService.Get(1);
+
+            FilesRepository filesRepository = new FilesRepository();
+            byte[] fileByte = filesRepository.Download(1);
         }
     }
 }

@@ -16,9 +16,13 @@ namespace BLL.Services
 
         private IAddressService _addressService;
 
-        public SupplierService(IAddressService addressService)
+        private IContactInfoService _contactInfoService;
+
+        public SupplierService(IAddressService addressService, IContactInfoService contactInfoService)
         {
             this._addressService = addressService;
+
+            this._contactInfoService = contactInfoService;
         }
 
         private Supplier IncludeAddress(Supplier supplier)
@@ -27,9 +31,20 @@ namespace BLL.Services
             return supplier;
         }
 
+        private Supplier IncludeContactInfor(Supplier supplier)
+        {
+            supplier.ContactInfos = _contactInfoService.GetBySupplierId(supplier.Id);
+            return supplier;
+        }
+
+        private Supplier IncludeAll(Supplier supplier)
+        {
+            return IncludeAddress(IncludeContactInfor(supplier));
+        }
+
         public Supplier Get(int id)
         {
-            return _supplierRepository.Get(id).ToBLL();
+            return IncludeAll(_supplierRepository.Get(id).ToBLL());
         }
     }
 }
