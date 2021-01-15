@@ -48,5 +48,15 @@ namespace DAO.Repository
                                                     CreateBy = (int)reader["CreateBy"]
                                                 }).Single();
         }
+
+        public bool CheckPassword(string login, string password)
+        {
+            Command cmd = new Command("CheckAccountPassword", true);
+            cmd.AddParameter("login", login);
+            cmd.AddParameter("password", password);
+            Connection conn = new Connection(this.connectionString);
+
+            return (conn.ExecuteReader<int>(cmd, (reader) => (int)reader["Id"]).ToList().Count > 0) ? true : false;
+        }
     }
 }

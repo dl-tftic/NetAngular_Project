@@ -58,7 +58,7 @@ namespace BLL.Services
 
         public Account GetByLogin(string login)
         {
-            return _accountRepository.GetByLogin(login).ToBLL();
+            return IncludeAll(_accountRepository.GetByLogin(login).ToBLL());
         }
     }
 }
