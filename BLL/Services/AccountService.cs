@@ -60,5 +60,10 @@ namespace BLL.Services
         {
             return IncludeAll(_accountRepository.GetByLogin(login).ToBLL());
         }
+
+        public bool CheckPassword(string login, string password)
+        {
+            return _accountRepository.CheckPassword(login, password);
+        }
     }
 }

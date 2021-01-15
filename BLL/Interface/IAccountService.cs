@@ -10,5 +10,7 @@ namespace BLL.Interface
     {
         public Account Get(int id);
         public Account GetByLogin(string login);
+
+        public bool CheckPassword(string login, string password);
     }
 }

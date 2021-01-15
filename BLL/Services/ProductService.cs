@@ -28,7 +28,7 @@ namespace BLL.Services
 
         public Product Get(int id)
         {
-            return _productRepository.Get(id).ToBLL();
+            return IncludeCategories(_productRepository.Get(id).ToBLL());
         }
 
         public List<Product> GetAll()

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
+using Newtonsoft.Json.Linq;
 
 namespace API.Controllers
 {
@@ -34,6 +35,13 @@ namespace API.Controllers
         public Account GetById(int id)
         {
             return _accountService.Get(id);
+        }
+
+        [HttpGet("CheckPassword")]
+        [Route("api/[controller]/CheckPassword")]
+        public bool CheckPassword([FromBody] JObject body)
+        {
+            return _accountService.CheckPassword(body["login"].ToString(), body["password"].ToString());
         }
 
         [HttpGet("{login}")]

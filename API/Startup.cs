@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
+//using Newtonsoft.Json;
 
 namespace API
 {
@@ -29,7 +30,10 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddControllers()
+                //.AddXmlSerializerFormatters()
+                .AddNewtonsoftJson();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
@@ -40,6 +44,14 @@ namespace API
             services.AddSingleton<IAddressService, AddressService>();
             services.AddSingleton<IRolesService, RolesService>();
             services.AddSingleton<IContactInfoService, ContactInfoService>();
+            services.AddSingleton<IProjectCategoryService, ProjectCategoryService> ();
+            services.AddSingleton<ICategoryService, CategoryService> ();
+            services.AddSingleton<IFilesService, FilesService> ();
+            services.AddSingleton<IProjectCategoryProductService, ProjectCategoryProductService> ();
+            services.AddSingleton<ISupplierService, SupplierService> ();
+            services.AddSingleton<IProductService, ProductService> ();
+            services.AddSingleton<IProductCategoryService, ProductCategoryService> ();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
