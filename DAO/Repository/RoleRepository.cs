@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class RoleRepository : RepositoryBase
     {
+
+        public RoleRepository() : base("Role")
+        {
+
+        }
+
         public Roles Get(int id)
         {
             Command cmd = new Command("GetRole", true);

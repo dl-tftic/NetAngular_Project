@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class ProjectCategoryRepository : RepositoryBase
     {
+
+        public ProjectCategoryRepository() : base("ProjectCategory")
+        {
+
+        }
+
         public IEnumerable<ProjectCategory> Get(int projectId)
         {
             Command cmd = new Command("GetProjectCategories", true);

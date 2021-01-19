@@ -9,10 +9,13 @@ using System.Reflection;
 namespace DAO.Repository
 {
 
-    
-
     public class CategoryRepository : RepositoryBase
     {
+
+        public CategoryRepository(): base("Category")
+        {
+            
+        }
 
         //public Category Get(int id)
         //{
@@ -31,6 +34,19 @@ namespace DAO.Repository
         //                                            CreateBy = (int)reader["CreateBy"]
         //                                        }).Single();
         //}
+
+        public int Insert(Category category)
+        {
+            Command cmd = new Command("AddCategory", true);
+            cmd.AddParameter("Name", category.Name);
+            cmd.AddParameter("Description", category.Description);
+            cmd.AddParameter("Type", category.Type);
+            cmd.AddParameter("CreateBy", category.CreateBy);
+
+            Connection conn = new Connection(this.connectionString);
+
+            return conn.ExecuteNonQuery(cmd);
+        }
 
         public Category Get(int id)
         {
@@ -58,6 +74,7 @@ namespace DAO.Repository
 
             return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
         }
+
     }
 
 }

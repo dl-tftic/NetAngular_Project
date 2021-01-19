@@ -9,6 +9,11 @@ namespace DAO.Repository
 {
     public class ProductRepository : RepositoryBase
     {
+
+        public ProductRepository() : base("Product")
+        {
+
+        }
         public Product Get(int id)
         {
             Command cmd = new Command("GetProduct", true);

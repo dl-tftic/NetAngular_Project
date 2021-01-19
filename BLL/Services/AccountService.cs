@@ -51,9 +51,24 @@ namespace BLL.Services
             return IncludeRole(IncludeAddress(IncludeContactInfos(account)));
         }
 
+        private List<Account> IncludeAllList(List<Account> accounts)
+        {
+            for (int i = 0; i < accounts.Count - 1; i++)
+            {
+                accounts[i] = IncludeAll(accounts[i]);
+            }
+
+            return accounts;
+        }
+
         public Account Get(int id)
         {
             return IncludeAll(_accountRepository.Get(id).ToBLL());
+        }
+
+        public List<Account> GetAll()
+        {
+            return IncludeAllList(_accountRepository.GetAll().ToListBLL());
         }
 
         public Account GetByLogin(string login)

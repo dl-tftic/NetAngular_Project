@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class AccountRepository : RepositoryBase
     {
+
+        public AccountRepository() : base("Account")
+        {
+
+        }
+
         public Account Get(int id)
         {
             Command cmd = new Command("GetAccount", true);
@@ -29,6 +35,14 @@ namespace DAO.Repository
                                                 }).Single();
         }
 
+        public IEnumerable<Account> GetAll()
+        {
+            Command cmd = new Command("GetAccountAll", true);
+
+            Connection conn = new Connection(this.connectionString);
+
+            return conn.ExecuteReader<Account>(cmd, (reader) => ToType<Account>(reader));
+        }
         public Account GetByLogin(string login)
         {
             Command cmd = new Command("GetAccountByLogin", true);

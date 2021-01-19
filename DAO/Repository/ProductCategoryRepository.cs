@@ -9,6 +9,11 @@ namespace DAO.Repository
 {
     public class ProductCategoryRepository : RepositoryBase
     {
+
+        public ProductCategoryRepository() : base("ProductCategory")
+        {
+
+        }
         public IEnumerable<ProductCategory> Get(int productId)
         {
             Command cmd = new Command("GetProductCategories", true);

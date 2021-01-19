@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class ContactInfoRepository : RepositoryBase
     {
+
+        public ContactInfoRepository() : base("ContactInfo")
+        {
+
+        }
+
         public ContactInfo Get(int id)
         {
             Command cmd = new Command("GetContactInfo", true);

@@ -9,6 +9,11 @@ namespace DAO.Repository
 {
     public class CountryRepository : RepositoryBase
     {
+
+        public CountryRepository() : base("Country")
+        {
+
+        }
         public Country Get(int id)
         {
             Command cmd = new Command("GetCountry", true);

@@ -43,5 +43,22 @@ namespace BLL.Mappers
             return dto;
         }
 
+        public static List<bll.Account> ToListBLL2(this IEnumerable<dto.Account> dto)
+        {
+            List<bll.Account> exportBll = new List<bll.Account>();
+
+            foreach (dto.Account item in dto)
+            {
+                exportBll.Add(item.ToBLL());
+            }
+
+            return exportBll;
+        }
+
+        public static List<bll.Account> ToListBLL(this IEnumerable<dto.Account> dto)
+        {
+            return BaseMappers.ToListBLL<bll.Account, dto.Account>(dto, ToBLL);
+        }
+
     }
 }

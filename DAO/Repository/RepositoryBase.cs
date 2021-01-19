@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
+using Tools.Connection;
 
 namespace DAO.Repository
 {
@@ -10,8 +11,20 @@ namespace DAO.Repository
         //protected string connectionString = @"Data Source=DESKTOP-MHV8JRA\SQLEXPRESS;Initial Catalog=Project;Integrated Security=True;";
         //protected string connectionString = @"Data Source=192.168.1.119;Initial Catalog=Project;Integrated Security=false;User Id=sa;";
         protected string connectionString = @"Data Source=192.168.1.119;Initial Catalog=Project;Integrated Security=false;User Id=project_user; Password=Abc1234mydb";
-        
+
         // @"Data Source = 192.168.1.119; Initial Catalog = heroDb; User ID = sa; Password=********;Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;"
+
+        protected string tableName;
+
+        public RepositoryBase()
+        {
+
+        }
+
+        public RepositoryBase(string tableName)
+        {
+            this.tableName = tableName;
+        }
 
         protected Object GetValueOrNull(Object reader)
         {
@@ -49,6 +62,22 @@ namespace DAO.Repository
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        protected int DeleteById(string tableName, int id)
+        {
+            Command cmd = new Command("DeleteById", true);
+            cmd.AddParameter("tableName", tableName);
+            cmd.AddParameter("id", id);
+
+            Connection conn = new Connection(this.connectionString);
+
+            return conn.ExecuteNonQuery(cmd);
+        }
+
+        public int DeleteById(int id)
+        {
+            return DeleteById(this.tableName, id);
         }
     }
 }

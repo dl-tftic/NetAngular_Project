@@ -9,6 +9,11 @@ namespace DAO.Repository
 {
     public class AddressRepository : RepositoryBase
     {
+
+        public AddressRepository() : base ("Address")
+        {
+
+        }
         public Address Get(int id)
         {
             Command cmd = new Command("GetAddress", true);

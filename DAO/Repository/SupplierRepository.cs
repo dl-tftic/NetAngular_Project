@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class SupplierRepository : RepositoryBase
     {
+
+        public SupplierRepository() : base("Supplier")
+        {
+            
+        }
+
         //public Supplier Get(int id)
         //{
         //    Command cmd = new Command("GetSupplier", true);

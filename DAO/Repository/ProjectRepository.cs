@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class ProjectRepository : RepositoryBase
     {
+
+        public ProjectRepository() : base("Project")
+        {
+
+        }
+
         public Project Get(int id)
         {
             Command cmd = new Command("GetProject", true);

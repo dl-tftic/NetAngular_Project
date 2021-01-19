@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class CitiesRepository : RepositoryBase
     {
+
+        public CitiesRepository() : base("Cities")
+        {
+
+        }
+
         public Cities Get(int id)
         {
             Command cmd = new Command("GetCity", true);

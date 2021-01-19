@@ -25,5 +25,10 @@ namespace BLL.Services
         {
             return _categoryRepository.GetByName(name).ToListBLL();
         }
+
+        public int Insert(Category category)
+        {
+            return _categoryRepository.Insert(category.ToDTO());
+        }
     }
 }

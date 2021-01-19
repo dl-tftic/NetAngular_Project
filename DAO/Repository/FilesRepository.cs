@@ -9,6 +9,12 @@ namespace DAO.Repository
 {
     public class FilesRepository : RepositoryBase
     {
+
+        public FilesRepository() : base("Files")
+        {
+
+        }
+
         public Files Get(int id)
         {
             Command cmd = new Command("GetFile", true);
