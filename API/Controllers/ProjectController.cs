@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProjectController : Controller
     {
@@ -28,7 +28,13 @@ namespace API.Controllers
             return "Welcome";
         }
 
-        [HttpGet("ById/{id}")]
+        [HttpGet]
+        public List<Project> GetAll()
+        {
+            return _projectService.GetAll();
+        }
+
+        [HttpGet("{id}")]
         public Project GetById(int id)
         {
             return _projectService.Get(id);

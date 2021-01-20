@@ -30,5 +30,10 @@ namespace BLL.Services
         {
             return _categoryRepository.Insert(category.ToDTO());
         }
+
+        public int Delete(int id)
+        {
+            return _categoryRepository.DeleteById(id);
+        }
     }
 }

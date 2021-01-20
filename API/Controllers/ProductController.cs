@@ -9,7 +9,7 @@ using BLL.Models;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : Controller
     {
@@ -26,10 +26,16 @@ namespace API.Controllers
             return "Welcome";
         }
 
-        [HttpGet("ById/{id}")]
+        [HttpGet("{id}")]
         public Product GetById(int id)
         {
             return _productService.Get(id);
+        }
+
+        [HttpGet]
+        public List<Product> GetAll()
+        {
+            return _productService.GetAll();
         }
         public IActionResult Index()
         {

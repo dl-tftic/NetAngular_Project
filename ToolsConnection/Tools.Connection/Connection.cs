@@ -60,7 +60,14 @@ namespace Tools.Connection
                 using (SqlCommand sqlCommand = CreateCommand(command, connection))
                 {
                     connection.Open();
-                    return sqlCommand.ExecuteNonQuery();
+                    try
+                    {
+                        return sqlCommand.ExecuteNonQuery();
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception(e.Message);
+                    }
                 }
             }
         }

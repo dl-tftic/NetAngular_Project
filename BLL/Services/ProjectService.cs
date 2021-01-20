@@ -50,5 +50,10 @@ namespace BLL.Services
         {
             return _projectRepository.GetByName(name).ToListBLL();
         }
+
+        public List<Project> GetAll()
+        {
+            return _projectRepository.GetAll().ToListBLL();
+        }
     }
 }

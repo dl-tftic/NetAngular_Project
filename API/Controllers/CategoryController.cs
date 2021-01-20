@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoryController : Controller
     {
@@ -21,8 +21,8 @@ namespace API.Controllers
             _categoryService = new CategoryService();
         }
 
-        [HttpGet("/{id}")]
-        public Category Get(int id)
+        [HttpGet("{id}")]
+        public Category GetById(int id)
         {
             return _categoryService.Get(id);
         }
@@ -37,6 +37,12 @@ namespace API.Controllers
         public int Post([FromBody] Category category)
         {
             return _categoryService.Insert(category);
+        }
+
+        [HttpDelete("{id}")]
+        public int Delete(int id)
+        {
+            return _categoryService.Delete(id);
         }
 
 

@@ -66,6 +66,7 @@
     <Folder Include="Script\Testing" />
     <Folder Include="StoredProcedure\Add" />
     <Folder Include="StoredProcedure\Get" />
+    <Folder Include="StoredProcedure\Delete" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\Country.sql" />
@@ -149,6 +150,9 @@
     <Build Include="StoredProcedure\Get\GetFilesByProductCategory.sql" />
     <Build Include="StoredProcedure\Get\GetFilesByProjectCategory.sql" />
     <Build Include="StoredProcedure\Get\GetProductByProjectCategory.sql" />
+    <Build Include="StoredProcedure\Delete\DeleteCategoryById.sql" />
+    <Build Include="StoredProcedure\Delete\DeleteById.sql" />
+    <Build Include="StoredProcedure\Get\GetProjectAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DbCreation.publish.xml" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using Tools.Connection;
+using System.Data;
 
 namespace DAO.Repository
 {
@@ -46,13 +47,16 @@ namespace DAO.Repository
                     //Console.WriteLine(prop.Name + " - " + prop.PropertyType);
                     // Console.WriteLine(prop.Name);
 
-                    if (this.GetValueOrNull(reader[prop.Name]) is null)
+                    if (HasColumn(reader, prop.Name))
                     {
-                        prop.SetValue(o, null);
-                    }
-                    else
-                    {
-                        prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType));
+                        if (this.GetValueOrNull(reader[prop.Name]) is null)
+                        {
+                            prop.SetValue(o, null);
+                        }
+                        else
+                        {
+                            prop.SetValue(o, Convert.ChangeType(this.GetValueOrNull(reader[prop.Name]), Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType));
+                        }
                     }
                 }
 
@@ -63,6 +67,18 @@ namespace DAO.Repository
                 throw new Exception(e.Message);
             }
         }
+
+        
+        protected bool HasColumn(System.Data.IDataReader dr, string columnName)
+        {
+            for (int i = 0; i < dr.FieldCount; i++)
+            {
+                if (dr.GetName(i).Equals(columnName, StringComparison.InvariantCultureIgnoreCase))
+                    return true;
+            }
+            return false;
+        }
+        
 
         protected int DeleteById(string tableName, int id)
         {

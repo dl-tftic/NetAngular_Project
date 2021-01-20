@@ -68,5 +68,13 @@ namespace DAO.Repository
                                                     AddressId = (int)reader["AddressId"]
                                                 });
         }
+
+        public IEnumerable<Project> GetAll()
+        {
+            Command cmd = new Command("GetProjectAll", true);
+         
+            Connection conn = new Connection(this.connectionString);
+            return conn.ExecuteReader<Project>(cmd, (reader) => ToType<Project>(reader));
+        }
     }
 }
