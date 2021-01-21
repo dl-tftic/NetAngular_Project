@@ -34,15 +34,29 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public int Post([FromBody] Category category)
+        public IActionResult Insert([FromBody] Category category)
         {
-            return _categoryService.Insert(category);
+            try
+            {
+                return Ok(_categoryService.Insert(category));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]
-        public int Delete(int id)
+        public IActionResult Delete(int id)
         {
-            return _categoryService.Delete(id);
+            try
+            {
+                return Ok(_categoryService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
 

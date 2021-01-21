@@ -23,12 +23,6 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public string Get()
-        {
-            return "Welcome";
-        }
-
-        [HttpGet]
         public List<Project> GetAll()
         {
             return _projectService.GetAll();

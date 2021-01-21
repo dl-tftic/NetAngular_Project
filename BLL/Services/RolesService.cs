@@ -17,10 +17,10 @@ namespace BLL.Services
 
         public RolesService()
         {
-            _roles = GetAll();
+            _roles = GetAllRoles();
         }
 
-        private List<Roles> GetAll()
+        private List<Roles> GetAllRoles()
         {
             return _roleRepo.GetAll().ToListBLL();
         }
@@ -39,6 +39,11 @@ namespace BLL.Services
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        public List<Roles> GetAll()
+        {
+            return _roles;
         }
     }
 }

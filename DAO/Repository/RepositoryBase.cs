@@ -82,18 +82,32 @@ namespace DAO.Repository
 
         protected int DeleteById(string tableName, int id)
         {
-            Command cmd = new Command("DeleteById", true);
-            cmd.AddParameter("tableName", tableName);
-            cmd.AddParameter("id", id);
+            try
+            {
+                Command cmd = new Command("DeleteById", true);
+                cmd.AddParameter("tableName", tableName);
+                cmd.AddParameter("id", id);
 
-            Connection conn = new Connection(this.connectionString);
+                Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteNonQuery(cmd);
+                return conn.ExecuteNonQuery(cmd);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int DeleteById(int id)
         {
-            return DeleteById(this.tableName, id);
+            try
+            {
+                return DeleteById(this.tableName, id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

@@ -33,7 +33,14 @@ namespace BLL.Services
 
         public int Delete(int id)
         {
-            return _categoryRepository.DeleteById(id);
+            try
+            { 
+                return _categoryRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
