@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AddressController : Controller
+    public class AddressController : Controller, IControllerInterface<Address>
     {
 
         private AddressService _addressService;
@@ -21,14 +22,25 @@ namespace API.Controllers
             _addressService = new AddressService(citiesService);
         }
 
-        [HttpGet("{id}")]
-        public Address GetById(int id)
+        public IActionResult Delete(int id)
         {
-            return _addressService.Get(id);
+            throw new NotImplementedException();
         }
-        public IActionResult Index()
+
+        public IActionResult GetAll()
         {
-            return View();
+            throw new NotImplementedException();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            return Ok(_addressService.Get(id));
+        }
+
+        public IActionResult Insert(Address t)
+        {
+            throw new NotImplementedException();
         }
     }
 }

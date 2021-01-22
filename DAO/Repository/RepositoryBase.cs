@@ -94,7 +94,13 @@ namespace DAO.Repository
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                string msg = string.Concat("Table: " + tableName
+                                            , " id: " + id.ToString()
+                                            , Environment.NewLine
+                                            , " " + e.Message
+                                            );
+
+                throw new Exception(msg);
             }
         }
 

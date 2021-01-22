@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ProductController : Controller
+    public class ProductController : Controller, IControllerInterface<Product>
     {
         private ProductService _productService;
 
@@ -20,26 +21,26 @@ namespace API.Controllers
             _productService = new ProductService(productCategoryService);
         }
 
-        [HttpGet]
-        public string Get()
-        {
-            return "Welcome";
-        }
-
         [HttpGet("{id}")]
-        public Product GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _productService.Get(id);
+            return Ok(_productService.Get(id));
         }
 
         [HttpGet]
-        public List<Product> GetAll()
+        public IActionResult GetAll()
         {
-            return _productService.GetAll();
+            return Ok(_productService.GetAll());
         }
-        public IActionResult Index()
+
+        public IActionResult Insert(Product product)
         {
-            return View();
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

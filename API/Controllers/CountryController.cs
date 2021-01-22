@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class CountryController : Controller
+    public class CountryController : Controller, IControllerInterface<Country>
     {
         private CountryService _countryService;
 
@@ -21,19 +22,30 @@ namespace API.Controllers
         }
 
         [HttpGet("name")]
-        public List<Country> GetByName(string name)
+        public IActionResult GetByName(string name)
         {
-            return _countryService.GetByName(name);
+            return Ok(_countryService.GetByName(name));
         }
 
         [HttpGet("id")]
-        public Country GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _countryService.Get(id);
+            return Ok(_countryService.Get(id));
         }
-        public IActionResult Index()
+
+        public IActionResult GetAll()
         {
-            return View();
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Insert(Country t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

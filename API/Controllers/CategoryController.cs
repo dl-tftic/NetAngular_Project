@@ -7,12 +7,13 @@ using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
 using Newtonsoft.Json.Linq;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class CategoryController : Controller
+    public class CategoryController : Controller, IControllerInterface<Category>
     {
         private CategoryService _categoryService;
 
@@ -22,15 +23,15 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public Category GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _categoryService.Get(id);
+            return Ok(_categoryService.Get(id));
         }
 
         [HttpGet]
-        public List<Category> GetAll(int id)
+        public IActionResult GetAll()
         {
-            return _categoryService.GetAll();
+            return Ok(_categoryService.GetAll());
         }
 
         [HttpPost]
@@ -59,10 +60,5 @@ namespace API.Controllers
             }
         }
 
-
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

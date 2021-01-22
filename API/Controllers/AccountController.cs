@@ -7,12 +7,13 @@ using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
 using Newtonsoft.Json.Linq;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class AccountController : Controller
+    public class AccountController : Controller, Interface.IControllerInterface<Account>
     {
         private AccountService _accountService;
 
@@ -26,22 +27,22 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public List<Account> GetAll()
+        public IActionResult GetAll()
         {
-            return _accountService.GetAll();
+            return Ok(_accountService.GetAll());
         }
 
         [HttpGet("ById/{id}")]
-        public Account GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _accountService.Get(id);
+            return Ok(_accountService.Get(id));
         }
 
         [HttpGet("CheckPassword")]
         [Route("api/[controller]/CheckPassword")]
-        public bool CheckPassword([FromBody] JObject body)
+        public IActionResult CheckPassword([FromBody] JObject body)
         {
-            return _accountService.CheckPassword(body["login"].ToString(), body["password"].ToString());
+            return Ok(_accountService.CheckPassword(body["login"].ToString(), body["password"].ToString()));
         }
 
         [HttpGet("{login}")]
@@ -49,5 +50,16 @@ namespace API.Controllers
         {
             return _accountService.GetByLogin(login);
         }
+
+        public IActionResult Insert(Account t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

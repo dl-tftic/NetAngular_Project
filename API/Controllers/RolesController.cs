@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
+using API.Interface;
+
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class RolesController : Controller
+    public class RolesController : Controller, IControllerInterface<Roles>
+
     {
 
         private RolesService _rolesService;
@@ -22,20 +25,25 @@ namespace API.Controllers
         }
 
         [HttpGet("id")]
-        public Roles GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _rolesService.Get(id);
+            return Ok(_rolesService.Get(id));
         }
 
         [HttpGet]
-        public List<Roles> GetAll()
+        public IActionResult GetAll()
         {
-            return _rolesService.GetAll();
+            return Ok(_rolesService.GetAll());
         }
 
-        public IActionResult Index()
+        public IActionResult Insert(Roles t)
         {
-            return View();
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

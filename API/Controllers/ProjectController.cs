@@ -7,12 +7,13 @@ using BLL.Interface;
 using BLL.Services;
 using BLL.Models;
 using Newtonsoft.Json.Linq;
+using API.Interface;
 
 namespace API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class ProjectController : Controller
+    public class ProjectController : Controller, IControllerInterface<Project>
     {
 
         private ProjectService _projectService;
@@ -22,21 +23,28 @@ namespace API.Controllers
             _projectService = new ProjectService(addressService, projectCategoryService);
         }
 
-        [HttpGet]
-        public List<Project> GetAll()
+        public IActionResult Delete(int id)
         {
-            return _projectService.GetAll();
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok( _projectService.GetAll());
         }
 
         [HttpGet("{id}")]
-        public Project GetById(int id)
+        public IActionResult GetById(int id)
         {
-            return _projectService.Get(id);
+            return Ok(_projectService.Get(id));
         }
 
-        public IActionResult Index()
+
+        public IActionResult Insert(Project t)
         {
-            return View();
+            throw new NotImplementedException();
         }
+
     }
 }
