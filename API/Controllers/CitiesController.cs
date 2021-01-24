@@ -35,7 +35,7 @@ namespace API.Controllers
 
         public IActionResult GetAll()
         {
-            throw new NotImplementedException();
+            return Ok(_citiesService.GetAll());
         }
 
         public IActionResult Insert(Cities t)

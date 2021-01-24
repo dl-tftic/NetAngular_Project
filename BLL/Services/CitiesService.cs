@@ -8,6 +8,7 @@ using BLL.Models;
 using BLL.Mappers;
 using BLL.Interface;
 
+
 namespace BLL.Services
 {
     public class CitiesService : ICitiesService
@@ -21,10 +22,10 @@ namespace BLL.Services
         public CitiesService(ICountryService countryService)
         {
             this._countryService = countryService;
-            this._cities = GetAll();
+            this._cities = Load();
         }
 
-        private List<Cities> GetAll()
+        private List<Cities> Load()
         {
             IEnumerable<dto.Cities> dtoCities = _cityRepo.GetAll();
 
@@ -79,6 +80,11 @@ namespace BLL.Services
             // return _cityRepo.GetCityByCountry(countryId).ToListBLL(_countryService);
             return _cities.Where(x => x.Country.Id == countryId).ToList();
 
+        }
+
+        public List<Cities> GetAll()
+        {
+            return _cities;
         }
 
     }

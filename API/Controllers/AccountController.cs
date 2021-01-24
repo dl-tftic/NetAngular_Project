@@ -32,7 +32,7 @@ namespace API.Controllers
             return Ok(_accountService.GetAll());
         }
 
-        [HttpGet("ById/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             return Ok(_accountService.Get(id));

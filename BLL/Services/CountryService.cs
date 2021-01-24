@@ -17,10 +17,10 @@ namespace BLL.Services
 
         public CountryService()
         {
-            _countries = GetAll();
+            _countries = Load();
         }
 
-        private List<Country> GetAll()
+        private List<Country> Load()
         {         
             return _countryRepo.GetAll().ToListBLL();
         }
@@ -33,6 +33,11 @@ namespace BLL.Services
         public List<Country> GetByName(string name)
         {
             return _countries.Where(x => x.Name.Contains(name)).ToList();
+        }
+
+        public List<Country> GetAll()
+        {
+            return _countries;
         }
     }
 }

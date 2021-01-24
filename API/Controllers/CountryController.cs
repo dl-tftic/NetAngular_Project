@@ -35,7 +35,8 @@ namespace API.Controllers
 
         public IActionResult GetAll()
         {
-            throw new NotImplementedException();
+            return Ok(_countryService.GetAll());
+            // throw new NotImplementedException();
         }
 
         public IActionResult Insert(Country t)
