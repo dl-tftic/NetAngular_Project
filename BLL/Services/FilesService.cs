@@ -15,27 +15,74 @@ namespace BLL.Services
 
         public Files Get(int id)
         {
-            return _filesRepository.Get(id).ToBLL();
+            try
+            {
+                return _filesRepository.Get(id).ToBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Files> GetByProductCategory(int productCategoryId)
         {
-            return _filesRepository.GetByProductCategory(productCategoryId).ToListBLL();
+            try
+            {
+                return _filesRepository.GetByProductCategory(productCategoryId).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Files> GetByProjectCategory(int projectCategoryId)
         {
-            return _filesRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
+            try
+            {
+                return _filesRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public byte[] Download(int id)
         {
-            return _filesRepository.Download(id);
+            try
+            {
+                return _filesRepository.Download(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Insert(Files file)
         {
-            return _filesRepository.Insert(file.ToDTO());
+            try
+            {
+                return _filesRepository.Insert(file.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _filesRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

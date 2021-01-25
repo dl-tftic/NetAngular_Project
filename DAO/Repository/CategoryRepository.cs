@@ -5,11 +5,12 @@ using System.Linq;
 using DTO.Models;
 using Tools.Connection;
 using System.Reflection;
+using DAO.Interface;
 
 namespace DAO.Repository
 {
 
-    public class CategoryRepository : RepositoryBase
+    public class CategoryRepository : BaseRepository, IRepository<Category>
     {
 
         public CategoryRepository(): base("Category")
@@ -37,44 +38,80 @@ namespace DAO.Repository
 
         public int Insert(Category category)
         {
-            Command cmd = new Command("AddCategory", true);
-            cmd.AddParameter("Name", category.Name);
-            cmd.AddParameter("Description", category.Description);
-            cmd.AddParameter("Type", category.Type);
-            cmd.AddParameter("CreateBy", category.CreateBy);
+            try
+            {
+                Command cmd = new Command("AddCategory", true);
+                cmd.AddParameter("Name", category.Name);
+                cmd.AddParameter("Description", category.Description);
+                cmd.AddParameter("Type", category.Type);
+                cmd.AddParameter("CreateBy", category.CreateBy);
 
-            Connection conn = new Connection(this.connectionString);
+                Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteNonQuery(cmd);
+                return conn.ExecuteNonQuery(cmd);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Category Get(int id)
         {
-            Command cmd = new Command("GetCategory", true);
-            cmd.AddParameter("id", id);
-            Connection conn = new Connection(this.connectionString);
+            try
+            {
+                return this.Get<Category>("GetCategory", id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader)).Single();
+            //Command cmd = new Command("GetCategory", true);
+            //cmd.AddParameter("id", id);
+            //Connection conn = new Connection(this.connectionString);
+
+            //return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader)).Single();
         }
 
         public IEnumerable<Category> GetByName(string name)
         {
-            Command cmd = new Command("GetCategoryByName", true);
-            cmd.AddParameter("name", name);
-            Connection conn = new Connection(this.connectionString);
+            try
+            {
+                Command cmd = new Command("GetCategoryByName", true);
+                cmd.AddParameter("name", name);
+                Connection conn = new Connection(this.connectionString);
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
+                return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public IEnumerable<Category> GetAll()
         {
-            Command cmd = new Command("GetCategoryAll", true);
-            
-            Connection conn = new Connection(this.connectionString);
+            try
+            {
+                return this.GetAll<Category>("GetCategoryAll");
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
 
-            return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
+            //Command cmd = new Command("GetCategoryAll", true);
+
+            //Connection conn = new Connection(this.connectionString);
+
+            //return conn.ExecuteReader<Category>(cmd, (reader) => ToType<Category>(reader));
         }
 
+        public int Update(Category obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }

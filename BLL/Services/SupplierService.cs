@@ -27,24 +27,64 @@ namespace BLL.Services
 
         private Supplier IncludeAddress(Supplier supplier)
         {
-            supplier.Address = _addressService.Get(supplier.GetAddressId());
-            return supplier;
+            try
+            {
+                supplier.Address = _addressService.Get(supplier.GetAddressId());
+                return supplier;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Supplier IncludeContactInfor(Supplier supplier)
         {
-            supplier.ContactInfos = _contactInfoService.GetBySupplierId(supplier.Id);
-            return supplier;
+            try
+            {
+                supplier.ContactInfos = _contactInfoService.GetBySupplierId(supplier.Id);
+                return supplier;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Supplier IncludeAll(Supplier supplier)
         {
-            return IncludeAddress(IncludeContactInfor(supplier));
+            try
+            {
+                return IncludeAddress(IncludeContactInfor(supplier));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Supplier Get(int id)
         {
-            return IncludeAll(_supplierRepository.Get(id).ToBLL());
+            try
+            {
+                return IncludeAll(_supplierRepository.Get(id).ToBLL());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _supplierRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

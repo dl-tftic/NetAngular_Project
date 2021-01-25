@@ -27,27 +27,60 @@ namespace BLL.Services
 
         private ProjectCategoryProduct IncludeSupplier(ProjectCategoryProduct projectCategoryProduct)
         {
-            projectCategoryProduct.Supplier = _supplierService.Get(projectCategoryProduct.GetSupplierId());
-            return projectCategoryProduct;
+            try
+            {
+                projectCategoryProduct.Supplier = _supplierService.Get(projectCategoryProduct.GetSupplierId());
+                return projectCategoryProduct;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private ProjectCategoryProduct IncludeProduct(ProjectCategoryProduct projectCategoryProduct)
         {
-            projectCategoryProduct.Product = _productService.Get(projectCategoryProduct.GetProductId());
-            return projectCategoryProduct;
+            try
+            {
+                projectCategoryProduct.Product = _productService.Get(projectCategoryProduct.GetProductId());
+                return projectCategoryProduct;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<ProjectCategoryProduct> GetByProjectCategory(int projectCategoryId)
         {
-            List<ProjectCategoryProduct> projectCategoryProducts = new List<ProjectCategoryProduct>();
-            projectCategoryProducts = _projectCategoryProductRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
-
-            for (int i = 0; i < projectCategoryProducts.Count - 1; i++)
+            try
             {
-                projectCategoryProducts[i] = IncludeProduct(IncludeSupplier(projectCategoryProducts[i]));
-            }
+                List<ProjectCategoryProduct> projectCategoryProducts = new List<ProjectCategoryProduct>();
+                projectCategoryProducts = _projectCategoryProductRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
 
-            return projectCategoryProducts;
+                for (int i = 0; i < projectCategoryProducts.Count - 1; i++)
+                {
+                    projectCategoryProducts[i] = IncludeProduct(IncludeSupplier(projectCategoryProducts[i]));
+                }
+
+                return projectCategoryProducts;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _projectCategoryProductRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

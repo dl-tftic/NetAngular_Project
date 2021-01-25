@@ -22,7 +22,14 @@ namespace BLL.Services
 
         private List<Roles> GetAllRoles()
         {
-            return _roleRepo.GetAll().ToListBLL();
+            try
+            {
+                return _roleRepo.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Roles Get(int id)
@@ -43,7 +50,26 @@ namespace BLL.Services
 
         public List<Roles> GetAll()
         {
-            return _roles;
+            try
+            {
+                return _roles;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _roleRepo.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

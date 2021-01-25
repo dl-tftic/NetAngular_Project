@@ -25,13 +25,27 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_categoryService.Get(id));
+            try
+            {
+                return Ok(_categoryService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_categoryService.GetAll());
+            try
+            {
+                return Ok(_categoryService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
@@ -60,5 +74,9 @@ namespace API.Controllers
             }
         }
 
+        public IActionResult Update(Category t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

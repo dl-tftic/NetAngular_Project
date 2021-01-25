@@ -27,64 +27,132 @@ namespace BLL.Services
 
         private List<Cities> Load()
         {
-            IEnumerable<dto.Cities> dtoCities = _cityRepo.GetAll();
-
-            List<Cities> cities = new List<Cities>();
-
-            foreach (dto.Cities item in dtoCities)
+            try
             {
-                Cities city = item.ToBLL();
-                city.Country = _countryService.Get(item.CountryId);
-                cities.Add(city);
-            }
+                IEnumerable<dto.Cities> dtoCities = _cityRepo.GetAll();
 
-            return cities;
+                List<Cities> cities = new List<Cities>();
+
+                foreach (dto.Cities item in dtoCities)
+                {
+                    Cities city = item.ToBLL();
+                    city.Country = _countryService.Get(item.CountryId);
+                    cities.Add(city);
+                }
+
+                return cities;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Cities IncludeCountry(Cities cities)
         {
-            cities.Country = _countryService.Get(cities.GetCountryId());
-            return cities;
+            try
+            {
+                cities.Country = _countryService.Get(cities.GetCountryId());
+                return cities;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private List<Cities> IncludeCountries(List<Cities> cities)
         {
-            for (int i = 0; i < cities.Count - 1; i++)
+            try
             {
-                cities[i] = IncludeCountry(cities[i]);
-            }
+                for (int i = 0; i < cities.Count - 1; i++)
+                {
+                    cities[i] = IncludeCountry(cities[i]);
+                }
 
-            return cities;
+                return cities;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Cities Get(int id)
         {
-            // return _cityRepo.Get(id).ToBLL(_countryService);
-            return _cities.Where(x => x.Id == id).SingleOrDefault();
+            try
+            {
+                // return _cityRepo.Get(id).ToBLL(_countryService);
+                return _cities.Where(x => x.Id == id).SingleOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Cities> GetByName(string name)
         {
-            // return _cityRepo.GetByName(name).ToListBLL(_countryService);
-            return _cities.Where(x => x.City.Contains(name)).ToList();
+            try
+            {
+                // return _cityRepo.GetByName(name).ToListBLL(_countryService);
+                return _cities.Where(x => x.City.Contains(name)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Cities> GetByPostalCode(string postalCode)
         {
-            // return _cityRepo.GetByPostalCode(postalCode).ToListBLL(_countryService);
-            return _cities.Where(x => x.Code.Contains(postalCode)).ToList();
+            try
+            {
+                // return _cityRepo.GetByPostalCode(postalCode).ToListBLL(_countryService);
+                return _cities.Where(x => x.Code.Contains(postalCode)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Cities> GetCityByCountry(int countryId)
         {
-            // return _cityRepo.GetCityByCountry(countryId).ToListBLL(_countryService);
-            return _cities.Where(x => x.Country.Id == countryId).ToList();
+            try
+            {
+                // return _cityRepo.GetCityByCountry(countryId).ToListBLL(_countryService);
+                return _cities.Where(x => x.Country.Id == countryId).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
 
         }
 
         public List<Cities> GetAll()
         {
-            return _cities;
+            try
+            {
+                return _cities;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _cityRepo.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
     }

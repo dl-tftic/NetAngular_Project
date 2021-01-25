@@ -13,17 +13,53 @@ namespace BLL.Services
         private ContactInfoRepository _contactInfoRepository = new ContactInfoRepository();
         public ContactInfo Get(int id)
         {
-            return _contactInfoRepository.Get(id).ToBLL();
+            try
+            {
+                return _contactInfoRepository.Get(id).ToBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<ContactInfo> GetByAccountId(int id)
         {
-            return _contactInfoRepository.GetByAccountId(id).ToListBLL();
+            try
+            {
+                return _contactInfoRepository.GetByAccountId(id).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<ContactInfo> GetBySupplierId(int supplierId)
         {
-            return _contactInfoRepository.GetBySupplierId(supplierId).ToListBLL();
+            try
+            {
+                return _contactInfoRepository.GetBySupplierId(supplierId).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                // ContactInfo doesn't have any idea so, it will be necessary 
+                // to have both field of primary key
+                // return _contactInfoRepository.DeleteById(id);
+                throw new Exception(id.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

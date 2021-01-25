@@ -22,38 +22,99 @@ namespace BLL.Services
 
         private Product IncludeCategories(Product product)
         {
-            product.Categories = _productCategoryService.Get(product.Id);
-            return product;
+            try
+            {
+                product.Categories = _productCategoryService.Get(product.Id);
+                return product;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Product Get(int id)
         {
-            return IncludeCategories(_productRepository.Get(id).ToBLL());
+            try
+            {
+                return IncludeCategories(_productRepository.Get(id).ToBLL());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Product> GetAll()
         {
-            return _productRepository.GetAll().ToListBLL();
+            try
+            {
+                return _productRepository.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Product> GetByManufacturer(string manufacturer)
         {
-            return _productRepository.GetByManufacturer(manufacturer).ToListBLL();
+            try
+            {
+                return _productRepository.GetByManufacturer(manufacturer).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Product> GetByName(string name)
         {
-            return _productRepository.GetByName(name).ToListBLL();
+            try
+            {
+                return _productRepository.GetByName(name).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Product> GetByProject(int projectCategoryId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                throw new NotImplementedException();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Product> GetByProjectCategory(int projectCategoryId)
         {
-            return _productRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
+            try
+            {
+                return _productRepository.GetByProjectCategory(projectCategoryId).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _productRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

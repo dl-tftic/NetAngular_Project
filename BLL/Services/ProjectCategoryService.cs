@@ -33,34 +33,41 @@ namespace BLL.Services
 
         public List<ProjectCategory> Get(int projectId)
         {
-            List<ProjectCategory> projectCategories = new List<ProjectCategory>();
-
-            IEnumerable<dto.ProjectCategory> dto = _projectCategoryRepository.Get(projectId);
-
-            foreach (dto.ProjectCategory item in dto)
+            try
             {
-                ProjectCategory projectCategory = new ProjectCategory(_categoryService.Get(item.CategoryId));
-                projectCategory.Id = item.Id;
-                projectCategory.ParentCategoryTypeId = item.ParentProjectCategoryId;
+                List<ProjectCategory> projectCategories = new List<ProjectCategory>();
 
-                projectCategory.AddFiles(_filesService.GetByProjectCategory(projectCategory.Id));
+                IEnumerable<dto.ProjectCategory> dto = _projectCategoryRepository.Get(projectId);
 
-                projectCategory.AddProjectCategoryProducts(_projectCategoryProductService.GetByProjectCategory(projectCategory.Id));
-
-                if (projectCategory.ParentCategoryTypeId is null)
+                foreach (dto.ProjectCategory item in dto)
                 {
-                    projectCategories.Add(projectCategory);
+                    ProjectCategory projectCategory = new ProjectCategory(_categoryService.Get(item.CategoryId));
+                    projectCategory.Id = item.Id;
+                    projectCategory.ParentCategoryTypeId = item.ParentProjectCategoryId;
+
+                    projectCategory.AddFiles(_filesService.GetByProjectCategory(projectCategory.Id));
+
+                    projectCategory.AddProjectCategoryProducts(_projectCategoryProductService.GetByProjectCategory(projectCategory.Id));
+
+                    if (projectCategory.ParentCategoryTypeId is null)
+                    {
+                        projectCategories.Add(projectCategory);
+                    }
+                    else
+                    {
+                        // IEnumerable<ProductCategory> props = productCategories.Where(x => x.Id == item.ParentCategoryProductId);
+                        // AddSubCategories(props.ToList(), productCategory.ParentCategoryProductId);
+                        // props.Single().AddChildProductCategory(productCategory);
+                        AddSubCategories(projectCategories, projectCategory);
+                    }
                 }
-                else
-                {
-                    // IEnumerable<ProductCategory> props = productCategories.Where(x => x.Id == item.ParentCategoryProductId);
-                    // AddSubCategories(props.ToList(), productCategory.ParentCategoryProductId);
-                    // props.Single().AddChildProductCategory(productCategory);
-                    AddSubCategories(projectCategories, projectCategory);
-                }
+
+                return projectCategories;
             }
-
-            return projectCategories;
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public void AddSubCategories(List<ProjectCategory> projectCategories, ProjectCategory projectCategory)
@@ -82,6 +89,18 @@ namespace BLL.Services
                         break;
                     }
                 }
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _projectCategoryRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
             }
         }
     }

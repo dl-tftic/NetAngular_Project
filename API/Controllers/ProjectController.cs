@@ -31,13 +31,27 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok( _projectService.GetAll());
+            try
+            {
+                return Ok(_projectService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_projectService.Get(id));
+            try
+            {
+                return Ok(_projectService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
 
@@ -46,5 +60,9 @@ namespace API.Controllers
             throw new NotImplementedException();
         }
 
+        public IActionResult Update(Project t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

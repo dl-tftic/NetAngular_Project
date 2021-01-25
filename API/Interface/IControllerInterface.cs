@@ -21,6 +21,8 @@ namespace API.Interface
         public IActionResult Insert(T t);
 
         public IActionResult Delete(int id);
-        
+
+        public IActionResult Update(T t);
+
     }
 }

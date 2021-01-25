@@ -35,10 +35,22 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_addressService.Get(id));
+            try
+            {
+                return Ok(_addressService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Insert(Address t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Update(Address t)
         {
             throw new NotImplementedException();
         }

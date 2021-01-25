@@ -31,54 +31,145 @@ namespace BLL.Services
 
         private Account IncludeRole(Account account)
         {
-            account.Role = _rolesService.Get(account.GetRoleId());
-            return account;
+            try
+            {
+                account.Role = _rolesService.Get(account.GetRoleId());
+                return account;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+          
         }
         private Account IncludeAddress(Account account)
         {
-            account.Address = _addressService.Get(account.GetAddressId());
-            return account;
+            try
+            {
+                account.Address = _addressService.Get(account.GetAddressId());
+                return account;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            
         }
 
         private Account IncludeContactInfos(Account account)
         {
-            account.ContactInfos = _contactInfoServices.GetByAccountId(account.Id);
-            return account;
+            try
+            {
+                account.ContactInfos = _contactInfoServices.GetByAccountId(account.Id);
+                return account;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Account IncludeAll(Account account)
         {
-            return IncludeRole(IncludeAddress(IncludeContactInfos(account)));
+            try
+            {
+                return IncludeRole(IncludeAddress(IncludeContactInfos(account)));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private List<Account> IncludeAllList(List<Account> accounts)
         {
-            for (int i = 0; i < accounts.Count - 1; i++)
+            try
             {
-                accounts[i] = IncludeAll(accounts[i]);
-            }
+                for (int i = 0; i < accounts.Count - 1; i++)
+                {
+                    accounts[i] = IncludeAll(accounts[i]);
+                }
 
-            return accounts;
+                return accounts;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Account Get(int id)
         {
-            return IncludeAll(_accountRepository.Get(id).ToBLL());
+            try
+            {
+                return IncludeAll(_accountRepository.Get(id).ToBLL());
+
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Account> GetAll()
         {
-            return IncludeAllList(_accountRepository.GetAll().ToListBLL());
+            try
+            {
+                return IncludeAllList(_accountRepository.GetAll().ToListBLL());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
         }
 
         public Account GetByLogin(string login)
         {
-            return IncludeAll(_accountRepository.GetByLogin(login).ToBLL());
+            try
+            {
+                return IncludeAll(_accountRepository.GetByLogin(login).ToBLL());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public bool CheckPassword(string login, string password)
         {
-            return _accountRepository.CheckPassword(login, password);
+            try
+            {
+                return _accountRepository.CheckPassword(login, password);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _accountRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Insert(Account account)
+        {
+            try
+            {
+                return _accountRepository.Insert(account.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

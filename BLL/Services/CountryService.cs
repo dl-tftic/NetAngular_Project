@@ -21,23 +21,62 @@ namespace BLL.Services
         }
 
         private List<Country> Load()
-        {         
-            return _countryRepo.GetAll().ToListBLL();
+        {
+            try
+            {
+                return _countryRepo.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Country Get(int id)
         {
-            return _countries.Where(x => x.Id == id).SingleOrDefault();
+            try
+            {
+                return _countries.Where(x => x.Id == id).SingleOrDefault();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Country> GetByName(string name)
         {
-            return _countries.Where(x => x.Name.Contains(name)).ToList();
+            try
+            {
+                return _countries.Where(x => x.Name.Contains(name)).ToList();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Country> GetAll()
         {
-            return _countries;
+            try
+            {
+                return _countries;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        public int Delete(int id)
+        {
+            try
+            {
+                return _countryRepo.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

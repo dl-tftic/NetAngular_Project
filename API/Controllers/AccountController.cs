@@ -21,45 +21,83 @@ namespace API.Controllers
         {
             _accountService = new AccountService(addressService, rolesService, contactInfoService);
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+ 
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_accountService.GetAll());
+            try
+            {
+                return Ok(_accountService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_accountService.Get(id));
+            try
+            {
+                return Ok(_accountService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        [HttpGet("CheckPassword")]
-        [Route("api/[controller]/CheckPassword")]
+        //[HttpGet("CheckPassword")]
+        //[Route("api/[controller]/CheckPassword")]
         public IActionResult CheckPassword([FromBody] JObject body)
         {
             return Ok(_accountService.CheckPassword(body["login"].ToString(), body["password"].ToString()));
         }
 
         [HttpGet("{login}")]
-        public Account GetByLogin(string login)
+        public IActionResult GetByLogin(string login)
         {
-            return _accountService.GetByLogin(login);
+            try
+            {
+                return Ok(_accountService.GetByLogin(login));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        public IActionResult Insert(Account t)
+        [HttpPost]
+        public IActionResult Insert(Account account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_accountService.Insert(account));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_accountService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
+        public IActionResult Update(Account t)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

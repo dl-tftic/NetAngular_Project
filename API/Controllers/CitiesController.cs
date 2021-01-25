@@ -24,18 +24,39 @@ namespace API.Controllers
         [HttpGet("name")]
         public IActionResult GetByName(string name)
         {
-            return Ok(_citiesService.GetByName(name));
+            try
+            {
+                return Ok(_citiesService.GetByName(name));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id")]
         public IActionResult GetById(int id)
         {
-            return Ok(_citiesService.Get(id));
+            try
+            {
+                return Ok(_citiesService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult GetAll()
         {
-            return Ok(_citiesService.GetAll());
+            try
+            {
+                return Ok(_citiesService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Insert(Cities t)
@@ -44,6 +65,11 @@ namespace API.Controllers
         }
 
         public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Update(Cities t)
         {
             throw new NotImplementedException();
         }

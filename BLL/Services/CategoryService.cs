@@ -13,22 +13,50 @@ namespace BLL.Services
         private CategoryRepository _categoryRepository = new CategoryRepository();
         public Category Get(int id)
         {
-            return _categoryRepository.Get(id).ToBLL();
+            try
+            {
+                return _categoryRepository.Get(id).ToBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Category> GetAll()
         {
-            return _categoryRepository.GetAll().ToListBLL();
+            try
+            {
+                return _categoryRepository.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Category> GetByName(string name)
         {
-            return _categoryRepository.GetByName(name).ToListBLL();
+            try
+            {
+                return _categoryRepository.GetByName(name).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Insert(Category category)
         {
-            return _categoryRepository.Insert(category.ToDTO());
+            try
+            {
+                return _categoryRepository.Insert(category.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Delete(int id)

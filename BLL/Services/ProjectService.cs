@@ -25,35 +25,89 @@ namespace BLL.Services
 
         private Project IncludeAddress(Project project)
         {
-            project.Address = _addressService.Get(project.GetAddressId());
-            return project;
+            try
+            {
+                project.Address = _addressService.Get(project.GetAddressId());
+                return project;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Project IncludeProjectCategories(Project project)
         {
-            project.Categories = _projectCategoryService.Get(project.Id);
-            return project;
+            try
+            {
+                project.Categories = _projectCategoryService.Get(project.Id);
+                return project;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Project Get(int id)
         {
-            Project project = _projectRepository.Get(id).ToBLL();
-            return IncludeAddress(IncludeProjectCategories(project));
+            try
+            {
+                Project project = _projectRepository.Get(id).ToBLL();
+                return IncludeAddress(IncludeProjectCategories(project));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Project> GetByAccountId(int accountId)
         {
-            return _projectRepository.GetByAccountId(accountId).ToListBLL(); ;
+            try
+            {
+                return _projectRepository.GetByAccountId(accountId).ToListBLL(); ;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Project> GetByName(string name)
         {
-            return _projectRepository.GetByName(name).ToListBLL();
+            try
+            {
+                return _projectRepository.GetByName(name).ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public List<Project> GetAll()
         {
-            return _projectRepository.GetAll().ToListBLL();
+            try
+            {
+                return _projectRepository.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _projectRepository.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

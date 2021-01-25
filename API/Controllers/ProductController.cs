@@ -24,13 +24,27 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_productService.Get(id));
+            try
+            {
+                return Ok(_productService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_productService.GetAll());
+            try
+            {
+                return Ok(_productService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Insert(Product product)
@@ -39,6 +53,11 @@ namespace API.Controllers
         }
 
         public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Update(Product t)
         {
             throw new NotImplementedException();
         }

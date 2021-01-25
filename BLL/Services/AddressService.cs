@@ -17,23 +17,63 @@ namespace BLL.Services
 
         public AddressService(ICitiesService citiesService)
         {
-            this._citiesService = citiesService;
+            try
+            {
+                this._citiesService = citiesService;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         private Address IncludeCity(Address address)
         {
-            address.City = _citiesService.Get(address.GetCityId());
-            return address;
+            try
+            {
+                address.City = _citiesService.Get(address.GetCityId());
+                return address;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public Address Get(int id)
         {
-            return IncludeCity(_addressRepo.Get(id).ToBLL());
+            try
+            {
+                return IncludeCity(_addressRepo.Get(id).ToBLL());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Insert(Address address)
         {
-            return _addressRepo.Insert(address.ToDTO());
+            try
+            {
+                return _addressRepo.Insert(address.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Delete(int id)
+        {
+            try
+            {
+                return _addressRepo.DeleteById(id);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

@@ -24,19 +24,40 @@ namespace API.Controllers
         [HttpGet("name")]
         public IActionResult GetByName(string name)
         {
-            return Ok(_countryService.GetByName(name));
+            try
+            {
+                return Ok(_countryService.GetByName(name));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("id")]
         public IActionResult GetById(int id)
         {
-            return Ok(_countryService.Get(id));
+            try
+            {
+                return Ok(_countryService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult GetAll()
         {
-            return Ok(_countryService.GetAll());
-            // throw new NotImplementedException();
+            try
+            {
+                return Ok(_countryService.GetAll());
+                // throw new NotImplementedException();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Insert(Country t)
@@ -45,6 +66,11 @@ namespace API.Controllers
         }
 
         public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Update(Country t)
         {
             throw new NotImplementedException();
         }

@@ -4,10 +4,11 @@ using System.Text;
 using System.Linq;
 using DTO.Models;
 using Tools.Connection;
+using DAO.Interface;
 
 namespace DAO.Repository
 {
-    public class SupplierRepository : RepositoryBase
+    public class SupplierRepository : BaseRepository, IRepository<Supplier>
     {
 
         public SupplierRepository() : base("Supplier")
@@ -34,10 +35,34 @@ namespace DAO.Repository
 
         public Supplier Get(int id)
         {
-            Command cmd = new Command("GetSupplier", true);
-            cmd.AddParameter("id", id);
-            Connection conn = new Connection(this.connectionString);
-            return conn.ExecuteReader<Supplier>(cmd, (reader) => ToType<Supplier>(reader)).Single();
+            try
+            {
+                return this.Get<Supplier>("GetSupplier", id);
+
+                //Command cmd = new Command("GetSupplier", true);
+                //cmd.AddParameter("id", id);
+                //Connection conn = new Connection(this.connectionString);
+                //return conn.ExecuteReader<Supplier>(cmd, (reader) => ToType<Supplier>(reader)).Single();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public IEnumerable<Supplier> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Insert(Supplier obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Update(Supplier obj)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -27,13 +27,27 @@ namespace API.Controllers
         [HttpGet("id")]
         public IActionResult GetById(int id)
         {
-            return Ok(_rolesService.Get(id));
+            try
+            {
+                return Ok(_rolesService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            return Ok(_rolesService.GetAll());
+            try
+            { 
+                return Ok(_rolesService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Insert(Roles t)
@@ -42,6 +56,11 @@ namespace API.Controllers
         }
 
         public IActionResult Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult Update(Roles t)
         {
             throw new NotImplementedException();
         }
