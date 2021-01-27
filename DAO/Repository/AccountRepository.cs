@@ -106,9 +106,27 @@ namespace DAO.Repository
             }
         }
 
-        public int Insert(Account obj)
+        public int Insert(Account account)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("Login", account.Login);
+                dico.Add("FirstName", account.FirstName);
+                dico.Add("LastName", account.LastName);
+                dico.Add("Activate", account.Activate);
+                dico.Add("Password", account.Password);
+                dico.Add("RoleID", account.RoleID);
+                dico.Add("AddressId", account.AddressId);
+                dico.Add("CreateBy", account.CreateBy);
+
+                return this.Insert<Account>("AddAccount", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(Account obj)

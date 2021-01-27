@@ -39,9 +39,23 @@ namespace DAO.Repository
             }
         }
 
-        public int Insert(ProjectCategoryProduct obj)
+        public int Insert(ProjectCategoryProduct projectCategoryProduct)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("Code", projectCategoryProduct.Code);
+                dico.Add("ProductId", projectCategoryProduct.ProductId);
+                dico.Add("Project_CategoryId", projectCategoryProduct.Project_CategoryId);
+                dico.Add("SupplierId", projectCategoryProduct.SupplierId);
+
+                return this.Insert<ProjectCategoryProduct>("AddProjectCategoryProduct", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(ProjectCategoryProduct obj)

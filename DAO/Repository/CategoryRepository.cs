@@ -40,15 +40,25 @@ namespace DAO.Repository
         {
             try
             {
-                Command cmd = new Command("AddCategory", true);
-                cmd.AddParameter("Name", category.Name);
-                cmd.AddParameter("Description", category.Description);
-                cmd.AddParameter("Type", category.Type);
-                cmd.AddParameter("CreateBy", category.CreateBy);
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+                
+                dico.Add("Name", category.Name);
+                dico.Add("Description", category.Description);
+                dico.Add("Type", category.Type);
+                dico.Add("CreateBy", category.CreateBy);
 
-                Connection conn = new Connection(this.connectionString);
+                return this.Insert<Category>("AddCategory", dico);
 
-                return conn.ExecuteNonQuery(cmd);
+
+                //Command cmd = new Command("AddCategory", true);
+                //cmd.AddParameter("Name", category.Name);
+                //cmd.AddParameter("Description", category.Description);
+                //cmd.AddParameter("Type", category.Type);
+                //cmd.AddParameter("CreateBy", category.CreateBy);
+
+                //Connection conn = new Connection(this.connectionString);
+
+                //return conn.ExecuteNonQuery(cmd);
             }
             catch (Exception e)
             {

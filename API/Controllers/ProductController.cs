@@ -52,9 +52,17 @@ namespace API.Controllers
             throw new NotImplementedException();
         }
 
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_productService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Update(Product t)

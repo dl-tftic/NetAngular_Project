@@ -110,9 +110,24 @@ namespace DAO.Repository
             }
         }
 
-        public int Insert(Project obj)
+        public int Insert(Project project)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("Name", project.Name);
+                dico.Add("Code", project.Code);
+                dico.Add("Description", project.Description);
+                dico.Add("AddressId", project.AddressId);
+                dico.Add("CreateBy", project.CreateBy);
+
+                return this.Insert<Project>("AddProject", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(Project obj)

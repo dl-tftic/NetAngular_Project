@@ -105,6 +105,34 @@ namespace DAO.Repository
             }
             return false;
         }
+
+        /// <summary>
+        /// Allow to insert a row in db based on store procedure name and object
+        /// </summary>
+        /// <typeparam name="T">Class type</typeparam>
+        /// <param name="spName">store procedure name</param>
+        /// <param name="par">dictionnary containing param name and value</param>
+        /// <returns>id of the row inserted or 0 if issue</returns>
+        protected int Insert<T>(string spName, Dictionary<string, object> par)
+        {
+            try
+            {
+                Command cmd = new Command(spName, true);
+
+                foreach (var item in par)
+                {
+                    cmd.AddParameter(item.Key, item.Value);
+                }
+
+                Connection conn = new Connection(this.connectionString);
+
+                return conn.ExecuteNonQuery(cmd);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
         
         /// <summary>
         /// Allow to retrieve an instance of object T from db

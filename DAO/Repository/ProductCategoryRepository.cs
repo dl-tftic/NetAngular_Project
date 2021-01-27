@@ -38,9 +38,22 @@ namespace DAO.Repository
             throw new NotImplementedException();
         }
 
-        public int Insert(ProductCategory obj)
+        public int Insert(ProductCategory productCategory)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("ProductId", productCategory.ProductId);
+                dico.Add("CategoryId", productCategory.CategoryId);
+                dico.Add("ParentCategoryProductId", productCategory.ParentCategoryProductId);
+
+                return this.Insert<ProductCategory>("AddProductCategory", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(ProductCategory obj)

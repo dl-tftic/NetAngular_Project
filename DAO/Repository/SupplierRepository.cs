@@ -55,9 +55,23 @@ namespace DAO.Repository
             throw new NotImplementedException();
         }
 
-        public int Insert(Supplier obj)
+        public int Insert(Supplier supplier)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("Name", supplier.Name);
+                dico.Add("Description", supplier.Description);
+                dico.Add("AddressId", supplier.AddressId);
+                dico.Add("CreateBy", supplier.CreateBy);
+
+                return this.Insert<Supplier>("AddSupplier", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(Supplier obj)

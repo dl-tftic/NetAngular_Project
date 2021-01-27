@@ -23,9 +23,17 @@ namespace API.Controllers
             _projectService = new ProjectService(addressService, projectCategoryService);
         }
 
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_projectService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet]

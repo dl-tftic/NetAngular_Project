@@ -94,9 +94,26 @@ namespace DAO.Repository
             }
         }
 
-        public int Insert(Product obj)
+        public int Insert(Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("Name", product.Name);
+                dico.Add("Manufacturer", product.Manufacturer);
+                dico.Add("Model", product.Model);
+                dico.Add("Revision", product.Revision);
+                dico.Add("Code", product.Code);
+                dico.Add("Description", product.Description);
+                dico.Add("CreateBy", product.CreateBy);
+
+                return this.Insert<Product>("AddProduct", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(Product obj)

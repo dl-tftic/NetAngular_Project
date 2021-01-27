@@ -71,9 +71,22 @@ namespace DAO.Repository
             }
         }
 
-        public int Insert(ContactInfo obj)
+        public int Insert(ContactInfo contactInfo)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("ContactType", contactInfo.ContactType);
+                dico.Add("ContactInformation", contactInfo.ContactInformation);
+                dico.Add("Description", contactInfo.Description);
+
+                return this.Insert<Category>("AddCategory", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(ContactInfo obj)

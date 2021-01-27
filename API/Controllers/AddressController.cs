@@ -24,7 +24,14 @@ namespace API.Controllers
 
         public IActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_addressService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult GetAll()

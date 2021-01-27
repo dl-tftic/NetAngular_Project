@@ -38,9 +38,22 @@ namespace DAO.Repository
             throw new NotImplementedException();
         }
 
-        public int Insert(ProjectCategory obj)
+        public int Insert(ProjectCategory projectCategory)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Dictionary<string, object> dico = new Dictionary<string, object>();
+
+                dico.Add("ProjectId", projectCategory.ProjectId);
+                dico.Add("CategoryId", projectCategory.CategoryId);
+                dico.Add("ParentProjectCategoryId", projectCategory.ParentProjectCategoryId);
+
+                return this.Insert<ProjectCategory>("AddProjectCategory", dico);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         public int Update(ProjectCategory obj)

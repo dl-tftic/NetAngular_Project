@@ -13,6 +13,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
+using Microsoft.AspNetCore.Http.Features;
 //using Newtonsoft.Json;
 
 namespace API
@@ -41,6 +42,15 @@ namespace API
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+
+            // For image upload/download
+            services.Configure<FormOptions>(x =>
+                                               {
+                                                   x.ValueLengthLimit = int.MaxValue;
+                                                   x.MultipartBodyLengthLimit = int.MaxValue;
+                                                   x.MemoryBufferThreshold = int.MaxValue;
+                                               }
+                                            );
 
             services.AddSwaggerGen(c =>
             {
@@ -77,6 +87,10 @@ namespace API
             app.UseRouting();
 
             app.UseCors("MyPolicy");
+
+            // For image locally
+            // app.UseStaticFiles();
+            
 
             app.UseAuthorization();
 

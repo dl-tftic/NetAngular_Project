@@ -144,7 +144,7 @@ namespace DAO.Repository
                 cmd.AddParameter("Description", file.Description);
                 cmd.AddParameter("CreateBy", file.CreateBy);
                 Connection conn = new Connection(this.connectionString);
-                return (int)(decimal)(conn.ExecuteScalar(cmd));
+                return (int)(conn.ExecuteScalar(cmd));
             }
             catch (Exception e)
             {
