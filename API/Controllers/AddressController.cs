@@ -22,18 +22,6 @@ namespace API.Controllers
             _addressService = new AddressService(citiesService);
         }
 
-        public IActionResult Delete(int id)
-        {
-            try
-            {
-                return Ok(_addressService.Delete(id));
-            }
-            catch (Exception e)
-            {
-                return BadRequest(e.Message);
-            }
-        }
-
         public IActionResult GetAll()
         {
             throw new NotImplementedException();
@@ -52,11 +40,33 @@ namespace API.Controllers
             }
         }
 
-        public IActionResult Insert(Address t)
+        [HttpPost]
+        public IActionResult Insert(Address address)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_addressService.Insert(address));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                return Ok(_addressService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpPut]
         public IActionResult Update(Address t)
         {
             throw new NotImplementedException();

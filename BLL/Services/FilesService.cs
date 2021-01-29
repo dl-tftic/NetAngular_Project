@@ -25,6 +25,30 @@ namespace BLL.Services
             }
         }
 
+        public Files GetById(int id)
+        {
+            try
+            {
+                return _filesRepository.Get(id).ToBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<Files> GetAll()
+        {
+            try
+            {
+                return _filesRepository.GetAll().ToListBLL();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public List<Files> GetByProductCategory(int productCategoryId)
         {
             try

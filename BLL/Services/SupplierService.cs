@@ -86,5 +86,32 @@ namespace BLL.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public int Insert(Supplier supplier)
+        {
+            try
+            {
+                return _supplierRepository.Insert(supplier.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public List<Supplier> GetAll()
+        {
+            // For this function, it's not necessary to include address and contacInfo (for now...)
+            try
+            {
+                Func<dto.Supplier, Supplier> convertTo = SupplierMappers.ToBLL;
+
+                return (_supplierRepository.GetAll().ToListBLL<Supplier, dto.Supplier>(convertTo));
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

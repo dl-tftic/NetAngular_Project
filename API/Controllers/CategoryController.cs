@@ -74,6 +74,7 @@ namespace API.Controllers
             }
         }
 
+        [HttpPut]
         public IActionResult Update(Category t)
         {
             throw new NotImplementedException();

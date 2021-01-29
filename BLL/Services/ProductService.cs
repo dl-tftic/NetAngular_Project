@@ -116,5 +116,17 @@ namespace BLL.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public int Insert(Product product)
+        {
+            try
+            {
+                return _productRepository.Insert(product.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

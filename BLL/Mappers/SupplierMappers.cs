@@ -8,6 +8,7 @@ namespace BLL.Mappers
 {
     public static class SupplierMappers
     {
+
         public static bll.Supplier ToBLL(this dto.Supplier dto)
         {
             bll.Supplier bll = new bll.Supplier(dto.AddressId);

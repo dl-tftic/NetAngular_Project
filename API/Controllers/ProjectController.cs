@@ -62,13 +62,21 @@ namespace API.Controllers
             }
         }
 
-
-        public IActionResult Insert(Project t)
+        [HttpPost]
+        public IActionResult Insert(Project project)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_projectService.Insert(project));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        public IActionResult Update(Project t)
+        [HttpPut]
+        public IActionResult Update(Project project)
         {
             throw new NotImplementedException();
         }

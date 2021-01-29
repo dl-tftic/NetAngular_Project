@@ -109,5 +109,17 @@ namespace BLL.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public int Insert(Project project)
+        {
+            try
+            {
+                return _projectRepository.Insert(project.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

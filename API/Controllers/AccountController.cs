@@ -95,6 +95,7 @@ namespace API.Controllers
             }
         }
 
+        [HttpPut]
         public IActionResult Update(Account t)
         {
             throw new NotImplementedException();

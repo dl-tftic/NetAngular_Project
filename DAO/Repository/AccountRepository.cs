@@ -129,6 +129,23 @@ namespace DAO.Repository
             }
         }
 
+        public int Insert(Account account, Address address)
+        {
+            try
+            {
+                AddressRepository addressRepository = new AddressRepository();
+                account.AddressId = addressRepository.Insert(address);
+
+                if (account.AddressId <= 0) throw new Exception("Can't save address for account");
+
+                return this.Insert(account);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public int Update(Account obj)
         {
             throw new NotImplementedException();

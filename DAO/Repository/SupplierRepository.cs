@@ -74,6 +74,20 @@ namespace DAO.Repository
             }
         }
 
+        public int Insert(Supplier supplier, Address address, ContactInfo[] contactInfos)
+        {
+            try
+            {
+                // Add Address & ContactInfo
+
+                return this.Insert(supplier);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
         public int Update(Supplier obj)
         {
             throw new NotImplementedException();

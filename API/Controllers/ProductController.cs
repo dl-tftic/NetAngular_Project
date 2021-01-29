@@ -47,9 +47,17 @@ namespace API.Controllers
             }
         }
 
-        public IActionResult Insert(Product product)
+        [HttpPost]
+        public IActionResult Insert([FromBody] Product product)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_productService.Insert(product));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpDelete("{id}")]
