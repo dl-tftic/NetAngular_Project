@@ -38,13 +38,27 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_supplierService.GetAll());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_supplierService.Get(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]

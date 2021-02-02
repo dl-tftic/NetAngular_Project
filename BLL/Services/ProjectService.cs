@@ -114,7 +114,22 @@ namespace BLL.Services
         {
             try
             {
+                project.Address.Id = this._addressService.Insert(project.Address);
                 return _projectRepository.Insert(project.ToDTO());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Insert (Project project, Address address)
+        {
+            try
+            {
+                project.Address.Id = this._addressService.Insert(address);
+
+                return this.Insert(project);
             }
             catch (Exception e)
             {
