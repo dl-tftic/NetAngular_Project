@@ -38,7 +38,7 @@ namespace BLL.Services
             }
         }
 
-        private Supplier IncludeContactInfor(Supplier supplier)
+        private Supplier IncludeContactInfo(Supplier supplier)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace BLL.Services
         {
             try
             {
-                return IncludeAddress(IncludeContactInfor(supplier));
+                return IncludeAddress(IncludeContactInfo(supplier));
             }
             catch (Exception e)
             {
@@ -91,6 +91,13 @@ namespace BLL.Services
         {
             try
             {
+                supplier.Address.Id = this._addressService.Insert(supplier.Address);
+
+                for (int i =0; i < supplier.ContactInfos.Count; i++)
+                {
+                    supplier.ContactInfos[i].Id = this._contactInfoService.Insert(supplier.ContactInfos[i]);
+                } 
+
                 return _supplierRepository.Insert(supplier.ToDTO());
             }
             catch (Exception e)

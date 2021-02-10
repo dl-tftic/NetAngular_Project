@@ -64,7 +64,14 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Insert(Supplier supplier)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return Ok(_supplierService.Insert(supplier));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPut]

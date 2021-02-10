@@ -20,6 +20,18 @@ namespace BLL.Mappers
             return bll;
         }
 
+        public static dto.ContactInfo ToDTO(this bll.ContactInfo bll)
+        {
+            dto.ContactInfo dto = new dto.ContactInfo();
+
+            dto.Id = bll.Id;
+            dto.ContactType = bll.ContactType;
+            dto.ContactInformation = bll.ContactInformation;
+            dto.Description = bll.Description;
+
+            return dto;
+        }
+
         public static List<bll.ContactInfo> ToListBLL(this IEnumerable<dto.ContactInfo> dto)
         {
             List<bll.ContactInfo> contactInfos = new List<bll.ContactInfo>();

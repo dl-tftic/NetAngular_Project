@@ -9,5 +9,7 @@ namespace BLL.Interface
         public List<ContactInfo> GetByAccountId(int id);
 
         public List<ContactInfo> GetBySupplierId(int supplierId);
+
+        public int Insert(ContactInfo contactInfo);
     }
 }

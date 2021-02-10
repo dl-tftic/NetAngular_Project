@@ -60,8 +60,10 @@ namespace DAO.Repository
         {
             try
             {
-                Command cmd = new Command("GetContactInfoBySupplierId", true);
-                cmd.AddParameter("supplierId", supplierId);
+                // Command cmd = new Command("GetContactInfoBySupplierId", true);
+                Command cmd = new Command("GetSupplierContactInfo", true);
+                //cmd.AddParameter("supplierId", supplierId);
+                cmd.AddParameter("id", supplierId);
                 Connection conn = new Connection(this.connectionString);
                 return conn.ExecuteReader<ContactInfo>(cmd, (reader) => ToType<ContactInfo>(reader));
             }

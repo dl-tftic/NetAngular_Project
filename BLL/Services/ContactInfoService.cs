@@ -11,6 +11,7 @@ namespace BLL.Services
     public class ContactInfoService : IContactInfoService
     {
         private ContactInfoRepository _contactInfoRepository = new ContactInfoRepository();
+
         public ContactInfo Get(int id)
         {
             try
@@ -55,6 +56,18 @@ namespace BLL.Services
                 // to have both field of primary key
                 // return _contactInfoRepository.DeleteById(id);
                 throw new Exception(id.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public int Insert(ContactInfo contactInfo)
+        {
+            try
+            {
+                return _contactInfoRepository.Insert(contactInfo.ToDTO());
             }
             catch (Exception e)
             {
