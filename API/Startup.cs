@@ -14,6 +14,9 @@ using System.Threading.Tasks;
 using BLL.Interface;
 using BLL.Services;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 //using Newtonsoft.Json;
 
 namespace API
@@ -30,11 +33,17 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string apiAddress = "https://localhost:44381";
 
             services.AddControllers()
                 //.AddXmlSerializerFormatters()
                 .AddNewtonsoftJson();
 
+            /*
+                https://www.youtube.com/watch?v=vlRqxCpCKGU
+                https://www.youtube.com/watch?v=NSQHiIAP7Z8
+                https://www.youtube.com/watch?v=tk1QK71DVtg
+             */
             // Add Cors
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -70,6 +79,27 @@ namespace API
             services.AddSingleton<IProductService, ProductService> ();
             services.AddSingleton<IProductCategoryService, ProductCategoryService> ();
 
+            services.AddAuthentication(opt =>
+                {
+                    opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(options => 
+                    {
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidateAudience = true,
+                            ValidateLifetime = true,
+                            ValidateIssuerSigningKey = true,
+
+                            ValidIssuer = apiAddress,
+                            ValidAudience = apiAddress,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"))
+                        };
+                    })
+                ;
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -90,8 +120,8 @@ namespace API
 
             // For image locally
             // app.UseStaticFiles();
-            
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
