@@ -78,6 +78,7 @@ namespace API
             services.AddSingleton<ISupplierService, SupplierService> ();
             services.AddSingleton<IProductService, ProductService> ();
             services.AddSingleton<IProductCategoryService, ProductCategoryService> ();
+            services.AddSingleton<IAccountService, AccountService>();
 
             services.AddAuthentication(opt =>
                 {

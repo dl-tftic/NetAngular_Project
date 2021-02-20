@@ -1,4 +1,7 @@
 ﻿using API.Models;
+using BLL.Interface;
+using BLL.Models;
+using BLL.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -15,6 +18,13 @@ namespace API.Controllers
     [ApiController]
     public class AuthController : Controller
     {
+        private AccountService _accountService;
+
+        public AuthController(IAccountService accountService)
+        {
+            this._accountService = (AccountService)accountService;
+        }
+
         [HttpPost]
         public IActionResult Login([FromBody] Auth auth)
         {
@@ -22,15 +32,26 @@ namespace API.Controllers
 
             if (auth.UserName == null) return BadRequest("");
 
-            if (auth.UserName == "testLogin")
+            if (this._accountService.CheckPassword(auth.UserName, auth.Password))
+            // if (auth.UserName == "testLogin")
             {
                 var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
                 var sigingCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
 
+                Account account = this._accountService.GetByLogin(auth.UserName);
+
+                var claims = new[]
+                {
+                    new Claim(ClaimTypes.Name, account.Login),
+                    new Claim(ClaimTypes.Role, account.Role.Role),
+                    new Claim("Id", account.Id.ToString())
+                };
+
                 var tokenOptions = new JwtSecurityToken(
                     issuer: apiAddress,
                     audience: apiAddress,
-                    claims: new List<Claim>(),
+                    // claims: new List<Claim>(),
+                    claims : claims,
                     expires: DateTime.Now.AddDays(5),
                     signingCredentials: sigingCredentials
                     );
